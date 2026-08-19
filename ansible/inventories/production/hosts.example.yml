@@ -1,0 +1,8 @@
+all:
+  children:
+    gildra_prod:
+      hosts:
+        gildra_server:
+          ansible_host: gildra.example.invalid
+          ansible_user: replace_with_ssh_config_user
+          ansible_port: 22

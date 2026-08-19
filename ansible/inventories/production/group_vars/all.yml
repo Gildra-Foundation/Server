@@ -1,0 +1,17 @@
+gildra_change_approved: false
+gildra_expected_distribution: Debian
+gildra_expected_major_version: "13"
+gildra_root: /srv/gildra
+gildra_timezone: Etc/UTC
+
+gildra_base_packages:
+  - ca-certificates
+  - git
+  - jq
+  - mdadm
+  - rsync
+  - smartmontools
+
+gildra_docker_packages:
+  - docker.io
+  - docker-compose

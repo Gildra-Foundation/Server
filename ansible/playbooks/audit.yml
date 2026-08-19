@@ -1,0 +1,54 @@
+---
+- name: Audit Gildra host without changes
+  hosts: gildra_prod
+  gather_facts: true
+  become: false
+
+  tasks:
+    - name: Confirm supported operating system
+      ansible.builtin.assert:
+        that:
+          - ansible_distribution == gildra_expected_distribution
+          - ansible_distribution_major_version == gildra_expected_major_version
+        fail_msg: >-
+          Expected {{ gildra_expected_distribution }} {{ gildra_expected_major_version }},
+          found {{ ansible_distribution }} {{ ansible_distribution_major_version }}.
+
+    - name: Read block-device layout
+      ansible.builtin.command:
+        argv:
+          - lsblk
+          - --json
+          - --output
+          - NAME,TYPE,SIZE,FSTYPE,MOUNTPOINTS
+      register: gildra_lsblk
+      changed_when: false
+
+    - name: Read filesystem usage
+      ansible.builtin.command:
+        argv: [df, --human-readable, --print-type]
+      register: gildra_df
+      changed_when: false
+
+    - name: Read memory usage
+      ansible.builtin.command:
+        argv: [free, --mebi]
+      register: gildra_free
+      changed_when: false
+
+    - name: Read software RAID summary
+      ansible.builtin.command:
+        argv: [mdadm, --detail, --scan]
+      register: gildra_mdadm
+      changed_when: false
+      failed_when: false
+
+    - name: Present audit summary for operator review
+      ansible.builtin.debug:
+        msg:
+          distribution: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
+          kernel: "{{ ansible_kernel }}"
+          memory: "{{ gildra_free.stdout_lines }}"
+          filesystems: "{{ gildra_df.stdout_lines }}"
+          block_devices: "{{ gildra_lsblk.stdout | from_json }}"
+          software_raid: "{{ gildra_mdadm.stdout_lines }}"

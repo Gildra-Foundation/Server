@@ -1,0 +1,30 @@
+---
+- name: Install audited base packages
+  ansible.builtin.apt:
+    name: "{{ gildra_base_packages }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Configure system timezone
+  ansible.builtin.file:
+    src: "/usr/share/zoneinfo/{{ gildra_timezone }}"
+    dest: /etc/localtime
+    state: link
+    force: true
+
+- name: Record system timezone
+  ansible.builtin.copy:
+    content: "{{ gildra_timezone }}\n"
+    dest: /etc/timezone
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Create Gildra filesystem root
+  ansible.builtin.file:
+    path: "{{ gildra_root }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0750"

@@ -1,0 +1,29 @@
+---
+- name: Bootstrap empty Gildra host
+  hosts: gildra_prod
+  gather_facts: true
+  become: true
+  serial: 1
+  any_errors_fatal: true
+
+  pre_tasks:
+    - name: Require explicit approval input
+      ansible.builtin.assert:
+        that:
+          - gildra_change_approved | bool
+        fail_msg: >-
+          Bootstrap is blocked. Review check mode and set
+          gildra_change_approved=true for the approved host and commit.
+
+    - name: Confirm supported operating system
+      ansible.builtin.assert:
+        that:
+          - ansible_distribution == gildra_expected_distribution
+          - ansible_distribution_major_version == gildra_expected_major_version
+        fail_msg: >-
+          Expected {{ gildra_expected_distribution }} {{ gildra_expected_major_version }},
+          found {{ ansible_distribution }} {{ ansible_distribution_major_version }}.
+
+  roles:
+    - role: common
+    - role: docker_host

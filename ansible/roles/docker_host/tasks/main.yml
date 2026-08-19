@@ -1,0 +1,44 @@
+---
+- name: Install Docker packages from the Debian archive
+  ansible.builtin.apt:
+    name: "{{ gildra_docker_packages }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Configure bounded Docker logging
+  ansible.builtin.template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: "0644"
+    backup: true
+  notify: Restart Docker
+
+- name: Validate Docker configuration before service activation
+  ansible.builtin.command:
+    argv:
+      - dockerd
+      - --validate
+      - --config-file=/etc/docker/daemon.json
+  changed_when: false
+
+- name: Create Gildra runtime directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0750"
+  loop:
+    - "{{ gildra_root }}/compose"
+    - "{{ gildra_root }}/config"
+    - "{{ gildra_root }}/data"
+    - "{{ gildra_root }}/secrets"
+
+- name: Enable Docker service
+  ansible.builtin.systemd_service:
+    name: docker
+    enabled: true
+    state: started
