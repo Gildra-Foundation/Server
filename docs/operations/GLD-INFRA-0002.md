@@ -43,8 +43,11 @@ database, DNS, Cloudflare or external-provider state is changed.
 - `git diff --check`: passed locally.
 - Secret-path, known credential-pattern, mutable-tag and published-database-port
   checks: passed locally.
-- Docker Compose render, yamllint and Ansible syntax: deferred to GitHub Actions
-  because those tools are not installed in the local Windows environment.
+- GitHub Actions `Validate infrastructure` run
+  [32403580754](https://github.com/Gildra-Foundation/Server/actions/runs/32403580754)
+  passed for revision `7223d281a41d5f12b0a0c65c2c6cde69c0e0e46e`,
+  including Docker Compose render, yamllint and Ansible syntax.
 - Server mutation: not applicable.
 
-Status: `partially_verified` until GitHub Actions completes on the pushed revision.
+Status: `verified` for the repository-only scope. The host audit remains
+`partially_verified` as documented separately.
