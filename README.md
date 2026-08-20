@@ -1,8 +1,17 @@
-# Gildra infrastructure
+# Gildra Server
 
-Reproducible, reviewable infrastructure for the Gildra project. The repository is
-currently at **stage 0**: it prepares an empty Debian host and defines the isolated
-data services. It does not deploy application code or modify the purchased server.
+Воспроизводимая и проверяемая инфраструктура для **Gildra** — двуязычного сайта
+с гайдами и аналитикой по World of Warcraft: PvE, PvP, Mythic+, рейды, тир-листы,
+метрики и будущая игровая база данных.
+
+Репозиторий находится на **этапе 0**. Купленный OVH-сервер обследован только в
+режиме чтения; Docker и сервисы Gildra ещё не установлены и не запущены. Текущий
+код подготавливает Debian-хост и описывает изолированный data plane:
+PostgreSQL, ClickHouse и Redis.
+
+Полный продуктовый стек и ответственность компонентов описаны в
+[контексте проекта](docs/project-context.md), а порядок безопасного развёртывания —
+в [плане](docs/deployment-plan.md).
 
 ## Safety model
 
@@ -13,18 +22,38 @@ data services. It does not deploy application code or modify the purchased serve
   and a verified OVH console or rescue path.
 - Production images must be locked by digest. Exact tags in `compose/env.example`
   are review defaults, not production approval.
+- Агент может изменять только этот репозиторий. Остальные репозитории
+  [Gildra Foundation](https://github.com/orgs/Gildra-Foundation/repositories)
+  доступны ему исключительно для чтения и отслеживания контрактов.
 
 ## Repository map
 
 ```text
+AGENTS.md               Полномочия и обязательные правила для агентов
 ansible/                 Host audit and Debian bootstrap
 compose/                 Isolated PostgreSQL, ClickHouse and Redis services
-docs/architecture.md     Scope and trust boundaries
+docs/project-context.md  Что такое Gildra и какой стек требуется
+docs/architecture.md     Целевая архитектура и trust boundaries
+docs/deployment-plan.md  Этапы, gates и критерии готовности
+docs/audits/             Редактированные результаты обследований
 docs/runbooks/           Human-operated procedures
 docs/operations/         Append-only change records
 scripts/validate.ps1     Local, secret-safe validation
 .github/workflows/       Pull-request checks only
 ```
+
+## Начало работы для инфраструктурного агента
+
+1. Прочитать `AGENTS.md` и документы из карты выше.
+2. Выполнить `git pull --ff-only` в локальном клоне `Server`.
+3. При необходимости проверить обновления организации только для чтения:
+   [Gildra Foundation repositories](https://github.com/orgs/Gildra-Foundation/repositories).
+4. Перед любой настройкой сервера выполнить read-only audit и подготовить
+   отдельную change card. Текущий известный baseline находится в
+   [аудите от 2026-08-20](docs/audits/2026-08-20-initial.md).
+
+Рабочий SSH alias в инструкциях — `gildra-prod`. Реальные адреса, hostnames,
+идентификаторы OVH и credentials в Git не добавляются.
 
 ## Local validation
 
@@ -59,7 +88,10 @@ using a mutating playbook.
 ## Current non-goals
 
 - Application Dockerfiles: Go and Next.js do not exist yet.
-- Cloudflare, DNS, firewall, and SSH mutations.
+- Неутверждённые Cloudflare, DNS, firewall и SSH mutations.
 - Database initialization or migrations.
-- Deployment to the purchased server.
-- GitHub push: this local repository has no configured remote yet.
+- Production deployment до выполнения gates из `docs/deployment-plan.md`.
+- Изменения в любых репозиториях организации, кроме `Server`.
+
+Git remote уже настроен на
+[Gildra-Foundation/Server](https://github.com/Gildra-Foundation/Server).

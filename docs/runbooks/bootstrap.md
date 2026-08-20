@@ -6,11 +6,15 @@ R3 work. The repository scaffold itself is R1.
 ## Preconditions
 
 1. Confirm the OVH server identifier and that Gildra owns it.
-2. Confirm Debian 13 and the expected public-key fingerprint.
+2. Confirm Debian 12 Bookworm and the expected public-key fingerprint.
 3. Verify OVH console or rescue access; keep the current SSH session open.
-4. Record RAID1, disk SMART, filesystem, memory, listening ports, and current users.
+4. Record RAID1, disk SMART, filesystem, memory, listening ports, firewall backend,
+   effective SSH policy, relevant sysctls, backup state, and current users.
 5. Create a change record with the exact inventory revision and operator.
 6. Do not paste credentials into the repository, chat, terminal history, or evidence.
+7. Read `../../AGENTS.md`, `../project-context.md`, and
+   `../deployment-plan.md`; confirm that the proposed work belongs to the
+   currently approved phase.
 
 ## Read-only audit
 
@@ -23,6 +27,13 @@ ansible-playbook playbooks/audit.yml \
 
 Review output before saving it. Redact IP addresses, usernames, serial numbers, and
 other host identifiers from any evidence committed to Git.
+
+The current audit playbook is intentionally non-privileged and does not prove the
+effective firewall, SSH include files, full authentication log, SMART health, or
+backup recoverability. A privileged read-only pass requires explicit approval but
+must still perform no installation, mutation, restart, or cleanup. Follow
+[`privileged-audit.md`](privileged-audit.md) for its exact boundary and evidence
+format.
 
 ## Check mode
 

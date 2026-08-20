@@ -1,6 +1,6 @@
 gildra_change_approved: false
 gildra_expected_distribution: Debian
-gildra_expected_major_version: "13"
+gildra_expected_major_version: "12"
 gildra_root: /srv/gildra
 gildra_timezone: Etc/UTC
 
