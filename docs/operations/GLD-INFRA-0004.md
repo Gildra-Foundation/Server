@@ -1,6 +1,6 @@
 # GLD-INFRA-0004 — pinned user-scoped Codex skill catalog
 
-Status: `approved_in_progress`
+Status: `verified`
 
 - Owner: Gildra project owner
 - Environment: `gildra-admin` account on production candidate
@@ -61,7 +61,30 @@ from an installed skill.
   `Server` changes;
 - a fresh Codex session discovers the active profile.
 
-Observed evidence and final status will be appended after the approved apply.
+## Apply and verification evidence
+
+Applied at `2026-08-20T20:15:25Z` as `gildra-admin` from reviewed Server
+revision `8511c68ed71167a0ec07ee26ef3c7834d7ec2057`.
+
+- GitHub Actions run
+  [32412763659](https://github.com/Gildra-Foundation/Server/actions/runs/32412763659)
+  passed for the revision before target apply.
+- The manager validated 114 manifest entries and installed 114 catalog
+  directories from their pinned source revisions.
+- A complete post-install `--check-catalog` verified all 114 `SKILL.md` files,
+  provenance markers and containment rules.
+- Profile `server` activated 28 managed symlinks; broken active links: 0.
+- Catalog size after installation: 19 MiB.
+- The credential-pattern scan found no private-key or GitHub-token pattern.
+  Three AWS-key-shaped matches were all the canonical public documentation
+  example and occurred only in security guidance/reference files; no credential
+  value was printed or copied into this repository.
+- The target checkout was clean and aligned with `origin/main` after apply.
+- No sudo, system package, service, container, port, application repository or
+  external control-plane change was part of the operation.
+
+A new Codex process must be started to refresh skill discovery. This is a client
+refresh, not a host or service restart.
 
 ## Recovery
 
