@@ -6,7 +6,7 @@ Status: `draft_blocked`
 - Environment: production candidate via SSH alias `gildra-prod`
 - Risk: R3, access/network/runtime changes
 - Prepared: 2026-08-20
-- Server source revision audited: `402d0434c95176aa11da21daf64a5fb506470683`
+- Latest Server source revision audited: `fdd4d5877afce0836e2b3d2d6f018fc6f413f33d`
 - Target mutation: not authorized
 - Secret material: references only; management ranges and recipients stay outside Git
 
@@ -34,6 +34,9 @@ Observed at the pinned revision and audit window:
 - effective SSH, firewall rules, AppArmor profiles, authentication history,
   sudo rules and root backup jobs are not proven;
 - `smartctl` is absent and external RAID alert delivery is not proven.
+- the owner-requested privileged retry at `2026-08-20T19:54Z` stopped at
+  preflight because `sudo -n true` still returned exit code 1 for the agent's
+  actual session; no root-only controls were rerun.
 
 Official Docker documentation supports Debian 12 through Docker's APT repository
 and provides Compose v2 as `docker-compose-plugin`. It also states that Docker
@@ -194,6 +197,9 @@ boundary instead of deleting data.
 
 ## Current decision
 
-`blocked`: repeat and complete the privileged audit, verify console/rescue, choose
-the external alert route, approve stable management ranges, and produce the exact
-reviewed Ansible diff/package pins before requesting any Stage 1 target mutation.
+`blocked`: make the scoped non-interactive sudo preflight work for the actual
+management account/session, repeat and complete the privileged audit, verify
+console/rescue, choose the external alert route, approve stable management
+ranges, and produce the exact reviewed Ansible diff/package pins before
+requesting any Stage 1 target mutation. The 19:54Z retry did not authorize or
+apply any Stage 1 action.

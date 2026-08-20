@@ -4,11 +4,13 @@ Status: `partially_verified`
 
 Operation family: `GLD-HOST-AUDIT-PRIVILEGED`
 
-Audit window: `2026-08-20T19:20:10Z`–`2026-08-20T19:24:36Z`
+Initial audit window: `2026-08-20T19:20:10Z`–`2026-08-20T19:24:36Z`
+
+Privilege retry: `2026-08-20T19:54:34Z`–`2026-08-20T19:55:00Z`
 
 Target: production candidate via SSH alias `gildra-prod`
 
-Server source revision: `402d0434c95176aa11da21daf64a5fb506470683`
+Latest Server source revision: `fdd4d5877afce0836e2b3d2d6f018fc6f413f33d`
 
 Hostnames, addresses, source ranges, account names, fingerprints, serials, UUIDs,
 raw logs and provider identifiers: intentionally omitted
@@ -17,9 +19,16 @@ raw logs and provider identifiers: intentionally omitted
 
 Владелец запросил privileged read-only audit и запретил installation, mutation и
 service restart. Все root-only команды были вызваны с `sudo -n`; их полезный
-вывод подавлялся до redaction. На target отсутствует non-interactive sudo:
-каждый privileged probe завершился до запуска audit tool с `password required`.
-Пароль не запрашивался и не передавался.
+вывод подавлялся до redaction. На target отсутствовал доступный агенту
+non-interactive sudo: каждый privileged probe завершился до запуска audit tool с
+`password required`. Пароль не запрашивался и не передавался.
+
+После сообщения владельца о готовности sudo privilege preflight был повторён на
+новом clean revision. Буквальные `sudo -n true`, `sudo -n /usr/bin/true`,
+`sudo -n /bin/true` и скрытый `sudo -n -l` снова вернули exit code 1. Проверка в
+PTY дала тот же результат. Согласно runbook повторный root-only pass остановлен
+на privilege precondition; старые world-readable observations не выдаются за
+повторно собранные privileged evidence.
 
 Поэтому audit расширил baseline безопасными world-readable проверками, но не
 закрыл privileged controls. RAID остаётся clean и non-degraded, failed units не
@@ -35,7 +44,7 @@ Stage 0 остаётся `in progress`. Этот документ не разр�
 | Precondition | Result | Redacted summary |
 |---|---|---|
 | exact target and read-only scope | `verified` | target identity matched the existing production-candidate baseline; identifiers omitted |
-| clean pinned Server revision | `verified` | clean `main`, aligned with local `origin/main`, revision recorded above |
+| clean pinned Server revision | `verified` | clean `main`, aligned with local `origin/main`, latest revision recorded above |
 | current SSH session | `verified` | active management session observed; endpoints omitted |
 | OVH console/rescue path | `not_verified` | owner confirmation was not available as audit evidence |
 | evidence redaction | `verified` | privileged raw output was suppressed; only summaries are committed |
@@ -65,6 +74,7 @@ was recorded.
 
 | Control | Timestamp UTC | Tool | Result | Redacted summary | Raw evidence | Candidate change |
 |---|---|---|---|---|---|---|
+| `privilege.preflight-retry` | 19:54–19:55 | sudo 1.9.13p3 | `blocked` | non-interactive `true` and rule listing returned exit code 1 in non-TTY and PTY contexts | suppressed | owner verifies the scoped sudo rule is installed for the actual management account/session |
 | `target.identity-time` | 19:20 | coreutils | `verified` | expected baseline and UTC observed; identity omitted | not retained | none |
 | `repository.pin` | 19:20 | Git | `verified` | clean pinned revision recorded above | Git history | none |
 | `access.console-rescue` | 19:20 | owner evidence | `not_verified` | cannot be proven from the host | none | owner verifies provider console/rescue before any mutation |
@@ -93,10 +103,10 @@ was recorded.
 
 ### Blockers
 
-1. `sudo` privilege is unavailable non-interactively, so the privileged audit is
-   incomplete. Do not request or paste a password into chat. Repeat via an
-   owner-operated privileged session or a separately approved, time-bounded
-   command allowlist.
+1. `sudo` privilege remains unavailable non-interactively after the owner-requested
+   retry, so the privileged audit is incomplete. Do not request or paste a
+   password into chat. Verify the scoped rule against the actual management
+   account/session, then repeat the preflight.
 2. Provider console/rescue access has not been recorded as owner-verified.
 3. Effective SSH, IPv4/IPv6 firewall and provider-firewall state remain unknown.
 
@@ -117,6 +127,9 @@ No host file, package, account, firewall rule, sysctl, service, Docker object,
 database, backup or external control plane was changed. No service was reloaded
 or restarted. No sibling Gildra repository was accessed because Stage 0/1 host
 baseline does not require an application contract.
+
+The second attempt stopped at privilege preflight and therefore performed no
+additional root-only host reads or Stage 1 actions.
 
 The separate Stage 1 draft is
 [`GLD-INFRA-0003`](../operations/GLD-INFRA-0003.md).
