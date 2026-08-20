@@ -41,7 +41,7 @@ $trackedDetail = if ($forbiddenTracked.Count -eq 0) {
 Write-CheckResult 'tracked secret paths' ($forbiddenTracked.Count -eq 0) $trackedDetail
 
 $textFiles = $repositoryFiles | Where-Object {
-    $_ -match '\.(md|yml|yaml|json|j2|ps1|example|gitignore|editorconfig)$'
+    $_ -match '\.(md|yml|yaml|json|j2|ps1|py|example|gitignore|editorconfig)$'
 }
 $secretPatterns = @(
     '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----',
@@ -73,6 +73,24 @@ Write-CheckResult 'mutable latest tags' ($null -eq $latestHits) 'compose file co
 
 $publishedPorts = Select-String -Path $composeFile -Pattern '^\s+ports:\s*$'
 Write-CheckResult 'database port exposure' ($null -eq $publishedPorts) 'no host ports are published'
+
+$skillManager = Join-Path $repoRoot 'scripts/manage-agent-skills.py'
+$skillManifest = Join-Path $repoRoot 'agent/skills.lock.json'
+$pythonExecutable = $null
+foreach ($candidate in @('python3', 'python')) {
+    if (-not (Get-Command $candidate -ErrorAction SilentlyContinue)) { continue }
+    & $candidate --version *> $null
+    if ($LASTEXITCODE -eq 0) {
+        $pythonExecutable = $candidate
+        break
+    }
+}
+if ($pythonExecutable) {
+    & $pythonExecutable $skillManager --manifest $skillManifest --check-manifest
+    Write-CheckResult 'agent skill manifest' ($LASTEXITCODE -eq 0) 'schema, pins, paths and profiles checked'
+} else {
+    Write-Host '[SKIP] agent skill manifest - Python 3.11+ is not installed'
+}
 
 if ($Production) {
     $imageLines = Get-Content -LiteralPath $envFile | Where-Object { $_ -match '_IMAGE=' }

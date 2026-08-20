@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-20",
+  "catalog_root": "~/.local/share/gildra-agent-skills/catalog",
+  "active_root": "~/.agents/skills",
+  "default_profile": "server",
+  "sources": [
+    {
+      "repo": "mhmtszr/go-guidelines",
+      "ref": "24954fadd15f209de9d12772a35540b0af4e1435",
+      "skills": [
+        { "name": "go-guidelines", "path": "skills/go-guidelines", "profiles": ["backend"] }
+      ]
+    },
+    {
+      "repo": "samber/cc-skills-golang",
+      "ref": "053894c088317d7ba2038cffcbf5fd57b5494fa6",
+      "skills": [
+        { "name": "golang-benchmark", "path": "skills/golang-benchmark", "profiles": ["backend"] },
+        { "name": "golang-cli", "path": "skills/golang-cli", "profiles": ["backend"] },
+        { "name": "golang-code-style", "path": "skills/golang-code-style", "profiles": ["backend"] },
+        { "name": "golang-concurrency", "path": "skills/golang-concurrency", "profiles": ["backend"] },
+        { "name": "golang-context", "path": "skills/golang-context", "profiles": ["backend"] },
+        { "name": "golang-continuous-integration", "path": "skills/golang-continuous-integration", "profiles": ["backend", "server"] },
+        { "name": "golang-data-structures", "path": "skills/golang-data-structures", "profiles": ["backend"] },
+        { "name": "golang-database", "path": "skills/golang-database", "profiles": ["backend"] },
+        { "name": "golang-dependency-injection", "path": "skills/golang-dependency-injection", "profiles": ["backend"] },
+        { "name": "golang-dependency-management", "path": "skills/golang-dependency-management", "profiles": ["backend"] },
+        { "name": "golang-design-patterns", "path": "skills/golang-design-patterns", "profiles": ["backend"] },
+        { "name": "golang-documentation", "path": "skills/golang-documentation", "profiles": ["backend"] },
+        { "name": "golang-error-handling", "path": "skills/golang-error-handling", "profiles": ["backend"] },
+        { "name": "golang-google-wire", "path": "skills/golang-google-wire", "profiles": ["backend"] },
+        { "name": "golang-gopls", "path": "skills/golang-gopls", "profiles": ["backend"] },
+        { "name": "golang-graphql", "path": "skills/golang-graphql", "profiles": ["backend"] },
+        { "name": "golang-grpc", "path": "skills/golang-grpc", "profiles": ["backend"] },
+        { "name": "golang-how-to", "path": "skills/golang-how-to", "profiles": ["backend"] },
+        { "name": "golang-lint", "path": "skills/golang-lint", "profiles": ["backend"] },
+        { "name": "golang-modernize", "path": "skills/golang-modernize", "profiles": ["backend"] },
+        { "name": "golang-naming", "path": "skills/golang-naming", "profiles": ["backend"] },
+        { "name": "golang-observability", "path": "skills/golang-observability", "profiles": ["backend"] },
+        { "name": "golang-performance", "path": "skills/golang-performance", "profiles": ["backend"] },
+        { "name": "golang-pkg-go-dev", "path": "skills/golang-pkg-go-dev", "profiles": ["backend"] },
+        { "name": "golang-popular-libraries", "path": "skills/golang-popular-libraries", "profiles": ["backend"] },
+        { "name": "golang-project-layout", "path": "skills/golang-project-layout", "profiles": ["backend"] },
+        { "name": "golang-refactoring", "path": "skills/golang-refactoring", "profiles": ["backend"] },
+        { "name": "golang-safety", "path": "skills/golang-safety", "profiles": ["backend"] },
+        { "name": "golang-samber-do", "path": "skills/golang-samber-do", "profiles": ["backend"] },
+        { "name": "golang-samber-hot", "path": "skills/golang-samber-hot", "profiles": ["backend"] },
+        { "name": "golang-samber-lo", "path": "skills/golang-samber-lo", "profiles": ["backend"] },
+        { "name": "golang-samber-mo", "path": "skills/golang-samber-mo", "profiles": ["backend"] },
+        { "name": "golang-samber-oops", "path": "skills/golang-samber-oops", "profiles": ["backend"] },
+        { "name": "golang-samber-ro", "path": "skills/golang-samber-ro", "profiles": ["backend"] },
+        { "name": "golang-samber-slog", "path": "skills/golang-samber-slog", "profiles": ["backend"] },
+        { "name": "golang-security", "path": "skills/golang-security", "profiles": ["backend", "security"] },
+        { "name": "golang-spf13-cobra", "path": "skills/golang-spf13-cobra", "profiles": ["backend"] },
+        { "name": "golang-spf13-viper", "path": "skills/golang-spf13-viper", "profiles": ["backend"] },
+        { "name": "golang-stay-updated", "path": "skills/golang-stay-updated", "profiles": ["backend"] },
+        { "name": "golang-stretchr-testify", "path": "skills/golang-stretchr-testify", "profiles": ["backend"] },
+        { "name": "golang-structs-interfaces", "path": "skills/golang-structs-interfaces", "profiles": ["backend"] },
+        { "name": "golang-swagger", "path": "skills/golang-swagger", "profiles": ["backend"] },
+        { "name": "golang-testing", "path": "skills/golang-testing", "profiles": ["backend"] },
+        { "name": "golang-troubleshooting", "path": "skills/golang-troubleshooting", "profiles": ["backend"] },
+        { "name": "golang-uber-dig", "path": "skills/golang-uber-dig", "profiles": ["backend"] },
+        { "name": "golang-uber-fx", "path": "skills/golang-uber-fx", "profiles": ["backend"] }
+      ]
+    },
+    {
+      "repo": "alirezarezvani/claude-skills",
+      "ref": "aa8d778811a557a2c28ccadda4cf3d0bd028a4cc",
+      "skills": [
+        { "name": "playwright-pro", "path": "engineering-team/playwright-pro/skills/pw", "profiles": ["frontend"] },
+        { "name": "karpathy-coder", "path": "engineering/karpathy-coder/skills/karpathy-coder", "profiles": ["backend", "frontend", "server"] },
+        { "name": "pr-review-expert", "path": "engineering/skills/pr-review-expert", "profiles": ["backend", "frontend", "security", "server"] }
+      ]
+    },
+    {
+      "repo": "wshobson/agents",
+      "ref": "367cb6a4a182cf7e9b0a17c9429f7411ddd9cf35",
+      "skills": [
+        { "name": "javascript-testing-patterns", "path": "plugins/javascript-typescript/skills/javascript-testing-patterns", "profiles": ["frontend"] },
+        { "name": "modern-javascript-patterns", "path": "plugins/javascript-typescript/skills/modern-javascript-patterns", "profiles": ["frontend"] },
+        { "name": "nodejs-backend-patterns", "path": "plugins/javascript-typescript/skills/nodejs-backend-patterns", "profiles": ["frontend"] },
+        { "name": "typescript-advanced-types", "path": "plugins/javascript-typescript/skills/typescript-advanced-types", "profiles": ["frontend"] },
+        { "name": "anti-reversing-techniques", "path": "plugins/reverse-engineering/skills/anti-reversing-techniques", "profiles": ["security"] },
+        { "name": "binary-analysis-patterns", "path": "plugins/reverse-engineering/skills/binary-analysis-patterns", "profiles": ["security"] },
+        { "name": "memory-forensics", "path": "plugins/reverse-engineering/skills/memory-forensics", "profiles": ["security"] },
+        { "name": "protocol-reverse-engineering", "path": "plugins/reverse-engineering/skills/protocol-reverse-engineering", "profiles": ["security"] }
+      ]
+    },
+    {
+      "repo": "SpillwaveSolutions/mastering-typescript-skill",
+      "ref": "2f74a00f731f2ea4d48f45d852067a7be8efd0d1",
+      "skills": [
+        { "name": "mastering-typescript", "path": "mastering-typescript", "profiles": ["frontend"] }
+      ]
+    },
+    {
+      "repo": "vercel-labs/agent-skills",
+      "ref": "b8caa260a420a73042e35521de4b5c8baf6446cc",
+      "skills": [
+        { "name": "vercel-composition-patterns", "path": "skills/composition-patterns", "profiles": ["frontend"] },
+        { "name": "vercel-react-best-practices", "path": "skills/react-best-practices", "profiles": ["frontend"] },
+        { "name": "vercel-react-view-transitions", "path": "skills/react-view-transitions", "profiles": ["frontend"] }
+      ]
+    },
+    {
+      "repo": "shadcn-ui/ui",
+      "ref": "4e88ab81ae1d1550165db949a903c691a04f699c",
+      "skills": [
+        { "name": "shadcn", "path": "skills/shadcn", "profiles": ["frontend"] }
+      ]
+    },
+    {
+      "repo": "supabase/agent-skills",
+      "ref": "8331f910845103c08d51f6ca1d86ebb7d1f745e3",
+      "skills": [
+        { "name": "supabase-postgres-best-practices", "path": "skills/supabase-postgres-best-practices", "profiles": ["backend", "server"] }
+      ]
+    },
+    {
+      "repo": "ClickHouse/agent-skills",
+      "ref": "5aec3114379671f33b1c502a51d420a0729c8172",
+      "skills": [
+        { "name": "clickhouse-architecture-advisor", "path": "skills/clickhouse-architecture-advisor", "profiles": ["backend", "server"] },
+        { "name": "clickhouse-best-practices", "path": "skills/clickhouse-best-practices", "profiles": ["backend", "server"] }
+      ]
+    },
+    {
+      "repo": "affaan-m/ECC",
+      "ref": "d8409a4b0813771235555e32e3d8046a73988bfa",
+      "skills": [
+        { "name": "database-migrations", "path": ".kiro/skills/database-migrations", "profiles": ["backend", "server"] }
+      ]
+    },
+    {
+      "repo": "Jeffallan/claude-skills",
+      "ref": "882ef55e377dbf9a4dbe496bb41ac6ccd0e555cf",
+      "skills": [
+        { "name": "api-designer", "path": "skills/api-designer", "profiles": ["backend", "server"] }
+      ]
+    },
+    {
+      "repo": "cloudflare/skills",
+      "ref": "f96bff754e428838818017f75817f0f9428acd48",
+      "skills": [
+        { "name": "cloudflare", "path": "skills/cloudflare", "profiles": ["frontend", "server"] },
+        { "name": "web-perf", "path": "skills/web-perf", "profiles": ["frontend"] }
+      ]
+    },
+    {
+      "repo": "anthropics/skills",
+      "ref": "0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+      "skills": [
+        { "name": "frontend-design", "path": "skills/frontend-design", "profiles": ["design", "frontend"] }
+      ]
+    },
+    {
+      "repo": "figma/mcp-server-guide",
+      "ref": "7f6562c4900fafb46e5e8fd3cc8ced954779bab3",
+      "skills": [
+        { "name": "figma-design-to-code", "path": "skills/figma-design-to-code", "profiles": ["design"] },
+        { "name": "figma-generate-library", "path": "skills/figma-generate-library", "profiles": ["design"] }
+      ]
+    },
+    {
+      "repo": "borghei/Claude-Skills",
+      "ref": "ddca910e95580c63a236303fc1534054f0f14d4c",
+      "skills": [
+        { "name": "product-designer", "path": "product-team/product-designer", "profiles": ["design"] }
+      ]
+    },
+    {
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "ref": "bc826e2267a36d98a2dcf5231e16c30ff546770f",
+      "skills": [
+        { "name": "ui-ux-pro-max", "path": ".claude/skills/ui-ux-pro-max", "profiles": ["design"] }
+      ]
+    },
+    {
+      "repo": "pbakaus/impeccable",
+      "ref": "f88b2837a7d7c3182e46307bbbb091a1ed547571",
+      "skills": [
+        { "name": "impeccable", "path": ".agents/skills/impeccable", "profiles": ["design", "frontend"] }
+      ]
+    },
+    {
+      "repo": "jakubkrehel/skills",
+      "ref": "6c43b20ce00f720eed854591abe480127629c191",
+      "skills": [
+        { "name": "better-accessibility", "path": "skills/better-accessibility", "profiles": ["design", "frontend"] },
+        { "name": "better-colors", "path": "skills/better-colors", "profiles": ["design"] },
+        { "name": "better-interface", "path": "skills/better-interface", "profiles": ["design"] },
+        { "name": "better-layout", "path": "skills/better-layout", "profiles": ["design"] },
+        { "name": "better-typography", "path": "skills/better-typography", "profiles": ["design"] },
+        { "name": "better-ui", "path": "skills/better-ui", "profiles": ["design", "frontend"] },
+        { "name": "better-writing", "path": "skills/better-writing", "profiles": ["design"] },
+        { "name": "explain-interface", "path": "skills/explain-interface", "profiles": ["design"] },
+        { "name": "interface-review", "path": "skills/interface-review", "profiles": ["design"] },
+        { "name": "variant", "path": "skills/variant", "profiles": ["design"] }
+      ]
+    },
+    {
+      "repo": "mukul975/Anthropic-Cybersecurity-Skills",
+      "ref": "f76261573a539ec40c3d434ecbb9e657d26aa921",
+      "skills": [
+        { "name": "configuring-oauth2-authorization-flow", "path": "skills/configuring-oauth2-authorization-flow", "profiles": ["backend", "security", "server"] },
+        { "name": "testing-oauth2-implementation-flaws", "path": "skills/testing-oauth2-implementation-flaws", "profiles": ["security"] },
+        { "name": "performing-oauth-scope-minimization-review", "path": "skills/performing-oauth-scope-minimization-review", "profiles": ["backend", "security", "server"] },
+        { "name": "implementing-secret-scanning-with-gitleaks", "path": "skills/implementing-secret-scanning-with-gitleaks", "profiles": ["security", "server"] },
+        { "name": "performing-service-account-credential-rotation", "path": "skills/performing-service-account-credential-rotation", "profiles": ["security", "server"] },
+        { "name": "detecting-sql-injection-via-waf-logs", "path": "skills/detecting-sql-injection-via-waf-logs", "profiles": ["security", "server"] }
+      ]
+    },
+    {
+      "repo": "Manacost-Labs/devops-skill",
+      "ref": "df64bd8d7f37e8275be42cc8a02f5f900a8ed41c",
+      "skills": [
+        { "name": "cicd-operations", "path": "cicd-operations", "profiles": ["server"] },
+        { "name": "cloud-aws", "path": "cloud-aws", "profiles": ["cloud"] },
+        { "name": "cloud-azure", "path": "cloud-azure", "profiles": ["cloud"] },
+        { "name": "cloud-gcp", "path": "cloud-gcp", "profiles": ["cloud"] },
+        { "name": "cloud-generic", "path": "cloud-generic", "profiles": ["server"] },
+        { "name": "cloud-selectel", "path": "cloud-selectel", "profiles": ["cloud"] },
+        { "name": "cloudflare-operations", "path": "cloudflare-operations", "profiles": ["server"] },
+        { "name": "data-resilience-operations", "path": "data-resilience-operations", "profiles": ["server"] },
+        { "name": "devops-core", "path": "devops-core", "profiles": ["server"] },
+        { "name": "devops-platform-contracts", "path": "devops-platform-contracts", "profiles": ["server"] },
+        { "name": "docker-operations", "path": "docker-operations", "profiles": ["server"] },
+        { "name": "enterprise-networking", "path": "enterprise-networking", "profiles": ["network"] },
+        { "name": "github-operations", "path": "github-operations", "profiles": ["server"] },
+        { "name": "iac-operations", "path": "iac-operations", "profiles": ["server"] },
+        { "name": "identity-directory-operations", "path": "identity-directory-operations", "profiles": ["identity"] },
+        { "name": "kubernetes-operations", "path": "kubernetes-operations", "profiles": ["kubernetes"] },
+        { "name": "linux-operations", "path": "linux-operations", "profiles": ["server"] },
+        { "name": "network-edge-operations", "path": "network-edge-operations", "profiles": ["server"] },
+        { "name": "reliability-operations", "path": "reliability-operations", "profiles": ["server"] },
+        { "name": "secrets-access-operations", "path": "secrets-access-operations", "profiles": ["server"] },
+        { "name": "security-compliance-operations", "path": "security-compliance-operations", "profiles": ["server"] },
+        { "name": "windows-server-operations", "path": "windows-server-operations", "profiles": ["windows"] }
+      ]
+    }
+  ],
+  "deferred_sources": [
+    {
+      "repo": "vercel-labs/next-skills",
+      "ref": "b76d687cf3e026eac3b1032f610f06b47a56377c",
+      "reason": "No SKILL.md was present at the pinned revision; requires a reviewed Codex adapter."
+    },
+    {
+      "repo": "NewMediaStudio/design-system-skills",
+      "ref": "d867c2c0cd3721fb36fe3143dbd2f0c1ab5d58fd",
+      "reason": "Repository contains guidance fragments but no SKILL.md; requires a reviewed Codex adapter."
+    },
+    {
+      "repo": "wshobson/agents",
+      "ref": "367cb6a4a182cf7e9b0a17c9429f7411ddd9cf35",
+      "paths": ["plugins/error-diagnostics", "plugins/code-documentation"],
+      "reason": "These are plugin bundles, not standalone skills; plugin permissions and commands require a separate review."
+    }
+  ],
+  "deferred_project_tools": [
+    { "repo": "storybookjs/storybook", "ref": "a14aa35ff6f9dcf3af2c836cd73c7c18fd0bd99f" },
+    { "repo": "chromaui/chromatic-cli", "ref": "7725993081614454b54b73bdfb3d987773ba6d2a" },
+    { "repo": "changesets/changesets", "ref": "bed458124f623463c581521ab56d040eba2a8b20" },
+    { "repo": "renovatebot/renovate", "ref": "bf17167a671afff607bce0d139ede69789cbebcf" },
+    { "repo": "golangci/golangci-lint", "ref": "f84535e9743220e244192f692b8c561ddf3a1c90" },
+    { "repo": "biomejs/biome", "ref": "69165c2425a975652ae42646bd9121bfc383a8f1" },
+    { "repo": "vercel/turborepo", "ref": "e89eddd9b0676ecbffadd94158f4924906889bc3" }
+  ]
+}

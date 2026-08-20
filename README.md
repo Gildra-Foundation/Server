@@ -39,6 +39,7 @@ docs/audits/             Редактированные результаты о�
 docs/runbooks/           Human-operated procedures
 docs/operations/         Append-only change records
 scripts/validate.ps1     Local, secret-safe validation
+agent/skills.lock.json   Pinned third-party Codex skill catalog and profiles
 .github/workflows/       Pull-request checks only
 ```
 
@@ -51,6 +52,9 @@ scripts/validate.ps1     Local, secret-safe validation
 4. Перед любой настройкой сервера выполнить read-only audit и подготовить
    отдельную change card. Текущий известный baseline находится в
    [аудите от 2026-08-20](docs/audits/2026-08-20-initial.md).
+5. Для воспроизводимой установки пользовательских навыков Codex использовать
+   [runbook agent tooling](docs/runbooks/agent-tooling.md); не устанавливать
+   frontend/backend build-инструменты глобально на production-хост.
 
 Рабочий SSH alias в инструкциях — `gildra-prod`. Реальные адреса, hostnames,
 идентификаторы OVH и credentials в Git не добавляются.
