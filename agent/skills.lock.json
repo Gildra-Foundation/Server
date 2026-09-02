@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-20",
+  "generated_at": "2026-09-02",
   "catalog_root": "~/.local/share/gildra-agent-skills/catalog",
   "active_root": "~/.agents/skills",
   "default_profile": "server",
@@ -238,6 +238,25 @@
         { "name": "security-compliance-operations", "path": "security-compliance-operations", "profiles": ["server"] },
         { "name": "windows-server-operations", "path": "windows-server-operations", "profiles": ["windows"] }
       ]
+    },
+    {
+      "repo": "nathankim0/clean-architecture-skills",
+      "ref": "0022fbb712f28517aa07a531fd82c70a9e531beb",
+      "skills": [
+        { "name": "clean-architecture", "path": "plugins/clean-architecture/skills/clean-architecture", "profiles": ["backend", "frontend", "server"] },
+        { "name": "kent-beck-style", "path": "plugins/kent-beck-style/skills/kent-beck-style", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "mattpocock/skills",
+      "ref": "6654f6b60cd9d5be8b54c6fafe44346dabeb3b76",
+      "skills": [
+        { "name": "codebase-design", "path": "skills/engineering/codebase-design", "profiles": ["backend", "frontend", "server"] },
+        { "name": "diagnosing-bugs", "path": "skills/engineering/diagnosing-bugs", "profiles": ["backend", "frontend", "server"] },
+        { "name": "domain-modeling", "path": "skills/engineering/domain-modeling", "profiles": ["backend", "frontend", "server"] },
+        { "name": "improve-codebase-architecture", "path": "skills/engineering/improve-codebase-architecture", "profiles": ["backend", "frontend", "server"] },
+        { "name": "resolving-merge-conflicts", "path": "skills/engineering/resolving-merge-conflicts", "profiles": ["backend", "frontend", "server"] }
+      ]
     }
   ],
   "deferred_sources": [
@@ -256,6 +275,11 @@
       "ref": "367cb6a4a182cf7e9b0a17c9429f7411ddd9cf35",
       "paths": ["plugins/error-diagnostics", "plugins/code-documentation"],
       "reason": "These are plugin bundles, not standalone skills; plugin permissions and commands require a separate review."
+    },
+    {
+      "repo": "ciembor/agent-rules-books",
+      "ref": "9c8763613514e4047d75c089533e09bc4b493c28",
+      "reason": "Repository publishes mini/full/nano rule sets without a standalone SKILL.md; a reviewed local router adapter is installed separately."
     }
   ],
   "deferred_project_tools": [
