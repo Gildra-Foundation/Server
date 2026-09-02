@@ -1701,6 +1701,53 @@
           ]
         }
       ]
+    },
+    {
+      "repo": "me2resh/agent-decision-record",
+      "ref": "e4e1a4e1702951a1a28bae918381daa61a792b70",
+      "skills": [
+        { "name": "decide", "path": "skills/decide", "profiles": ["backend", "frontend", "server"] },
+        { "name": "agdr-decide", "path": "tools/codex/agdr-decide", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "vladikk/modularity",
+      "ref": "bcdca9a595764b9aa88d5d8d6020f52e7f5f1f52",
+      "skills": [
+        { "name": "balanced-coupling", "path": "skills/balanced-coupling", "profiles": ["backend", "frontend", "server"] },
+        { "name": "design", "path": "skills/design", "profiles": ["backend", "frontend", "server"] },
+        { "name": "document", "path": "skills/document", "profiles": ["backend", "frontend", "server"] },
+        { "name": "review", "path": "skills/review", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "millionco/react-doctor",
+      "ref": "fd23edca7eaa76b7f2b66795cfc829cc1967b7f3",
+      "skills": [
+        { "name": "improve-react", "path": "skills/improve-react", "profiles": ["backend", "frontend", "server"] },
+        { "name": "improve-threejs", "path": "skills/improve-threejs", "profiles": ["backend", "frontend", "server"] },
+        { "name": "react-doctor-performance", "path": "skills/performance", "profiles": ["backend", "frontend", "server"] },
+        { "name": "react-doctor", "path": "skills/react-doctor", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "addyosmani/web-quality-skills",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skills": [
+        { "name": "accessibility", "path": "skills/accessibility", "profiles": ["backend", "frontend", "server"] },
+        { "name": "best-practices", "path": "skills/best-practices", "profiles": ["backend", "frontend", "server"] },
+        { "name": "core-web-vitals", "path": "skills/core-web-vitals", "profiles": ["backend", "frontend", "server"] },
+        { "name": "performance", "path": "skills/performance", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo", "path": "skills/seo", "profiles": ["backend", "frontend", "server"] },
+        { "name": "web-quality-audit", "path": "skills/web-quality-audit", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "jezweb/claude-skills",
+      "ref": "e875a6bfff809e5d42c584104031e36e1f014f18",
+      "skills": [
+        { "name": "react-patterns", "path": "plugins/frontend/skills/react-patterns", "profiles": ["backend", "frontend", "server"] }
+      ]
     }
   ],
   "deferred_sources": [
