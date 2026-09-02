@@ -288,6 +288,1419 @@
       "skills": [
         { "name": "dependency-updater", "path": "skills/dependency-updater", "profiles": ["backend", "frontend", "server"] }
       ]
+    },
+    {
+      "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+      "ref": "6dbe1a1d868eab51a3bc9011b0f55e2891513e40",
+      "skills": [
+        {
+          "name": "context-compression",
+          "path": "skills/context-compression",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "context-degradation",
+          "path": "skills/context-degradation",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "context-fundamentals",
+          "path": "skills/context-fundamentals",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "context-optimization",
+          "path": "skills/context-optimization",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "filesystem-context",
+          "path": "skills/filesystem-context",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "multi-agent-patterns",
+          "path": "skills/multi-agent-patterns",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "long-horizon-prompting",
+          "path": "skills/long-horizon-prompting",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "uditgoenka/autoresearch",
+      "ref": "050e30dc4ba0974b03f2873111b9901ec3211390",
+      "skills": [
+        {
+          "name": "autoresearch",
+          "path": "plugins/autoresearch/skills/autoresearch",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "netresearch/github-project-skill",
+      "ref": "287380028699f62301e61966499ffca284199746",
+      "skills": [
+        {
+          "name": "github-project",
+          "path": "skills/github-project",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "synthesisengineering/synthesis-skills",
+      "ref": "f1b9bb69f9698e23a8f8287e0b4d523151ab19e2",
+      "skills": [
+        {
+          "name": "synthesis-absence-coordination",
+          "path": "skills/synthesis-absence-coordination",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-adversarial-review",
+          "path": "skills/synthesis-adversarial-review",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-agent-conformance",
+          "path": "skills/synthesis-agent-conformance",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-agent-correspondence",
+          "path": "skills/synthesis-agent-correspondence",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-anti-shortcuts",
+          "path": "skills/synthesis-anti-shortcuts",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-article-refresh",
+          "path": "skills/synthesis-article-refresh",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-article-writing",
+          "path": "skills/synthesis-article-writing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-autopilot",
+          "path": "skills/synthesis-autopilot",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-bitbucket",
+          "path": "skills/synthesis-bitbucket",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-catchup-ledger",
+          "path": "skills/synthesis-catchup-ledger",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-checkpoint",
+          "path": "skills/synthesis-checkpoint",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-chief-of-staff",
+          "path": "skills/synthesis-chief-of-staff",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-clean-text",
+          "path": "skills/synthesis-clean-text",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-code-audit",
+          "path": "skills/synthesis-code-audit",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-code-integration",
+          "path": "skills/synthesis-code-integration",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-code-planning",
+          "path": "skills/synthesis-code-planning",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-codebase-review",
+          "path": "skills/synthesis-codebase-review",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-concise-messaging",
+          "path": "skills/synthesis-concise-messaging",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-content-distribution",
+          "path": "skills/synthesis-content-distribution",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-content-framing",
+          "path": "skills/synthesis-content-framing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-content-quality",
+          "path": "skills/synthesis-content-quality",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-context-lifecycle",
+          "path": "skills/synthesis-context-lifecycle",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-creative-writer",
+          "path": "skills/synthesis-creative-writer",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-daily-rituals",
+          "path": "skills/synthesis-daily-rituals",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-decision-packet",
+          "path": "skills/synthesis-decision-packet",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-disclosure-policy",
+          "path": "skills/synthesis-disclosure-policy",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-executive-communication",
+          "path": "skills/synthesis-executive-communication",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-fact-checking",
+          "path": "skills/synthesis-fact-checking",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-git-hooks",
+          "path": "skills/synthesis-git-hooks",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-grounding-discipline",
+          "path": "skills/synthesis-grounding-discipline",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-implementation-integrity",
+          "path": "skills/synthesis-implementation-integrity",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-inbox-cleanup",
+          "path": "skills/synthesis-inbox-cleanup",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-kb-edit",
+          "path": "skills/synthesis-kb-edit",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-knowledge-capture",
+          "path": "skills/synthesis-knowledge-capture",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-link-research",
+          "path": "skills/synthesis-link-research",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-llm-setup",
+          "path": "skills/synthesis-llm-setup",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-local-model-runtime",
+          "path": "skills/synthesis-local-model-runtime",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-mac-sync",
+          "path": "skills/synthesis-mac-sync",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-meeting-transcripts",
+          "path": "skills/synthesis-meeting-transcripts",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-message-guard",
+          "path": "skills/synthesis-message-guard",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-model-tiers",
+          "path": "skills/synthesis-model-tiers",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-okf",
+          "path": "skills/synthesis-okf",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-onboarding",
+          "path": "skills/synthesis-onboarding",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-pr-review",
+          "path": "skills/synthesis-pr-review",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-preflight",
+          "path": "skills/synthesis-preflight",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-preplan",
+          "path": "skills/synthesis-preplan",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-project-management",
+          "path": "skills/synthesis-project-management",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-promotion-gate",
+          "path": "skills/synthesis-promotion-gate",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-quick-answers",
+          "path": "skills/synthesis-quick-answers",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-reader-briefing",
+          "path": "skills/synthesis-reader-briefing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-repo-guard",
+          "path": "skills/synthesis-repo-guard",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-response-merger",
+          "path": "skills/synthesis-response-merger",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-review-triage",
+          "path": "skills/synthesis-review-triage",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-skill-router",
+          "path": "skills/synthesis-skill-router",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-skills-manager",
+          "path": "skills/synthesis-skills-manager",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-slack-sync",
+          "path": "skills/synthesis-slack-sync",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-technical-advisor",
+          "path": "skills/synthesis-technical-advisor",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-text-provenance",
+          "path": "skills/synthesis-text-provenance",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-thinking-framework",
+          "path": "skills/synthesis-thinking-framework",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-tree-of-thought",
+          "path": "skills/synthesis-tree-of-thought",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-voice-profiler",
+          "path": "skills/synthesis-voice-profiler",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-writing-craft",
+          "path": "skills/synthesis-writing-craft",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "synthesis-writing-pitfalls",
+          "path": "skills/synthesis-writing-pitfalls",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "fugazi/test-automation-skills-agents",
+      "ref": "4a813b0534ed14a937c3931bfb2057ace31b5af2",
+      "skills": [
+        {
+          "name": "a11y-playwright-testing",
+          "path": "skills/a11y-playwright-testing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "accessibility-selenium-testing",
+          "path": "skills/accessibility-selenium-testing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-testing",
+          "path": "skills/api-testing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "grill-me-qa",
+          "path": "skills/grill-me-qa",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "playwright-cli",
+          "path": "skills/playwright-cli",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "playwright-e2e-testing",
+          "path": "skills/playwright-e2e-testing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "playwright-regression-testing",
+          "path": "skills/playwright-regression-testing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "qa-investigation",
+          "path": "skills/qa-investigation",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "qa-manual-istqb",
+          "path": "skills/qa-manual-istqb",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "webapp-selenium-testing",
+          "path": "skills/webapp-selenium-testing",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "LambdaTest/agent-skills",
+      "ref": "0491a3a29aa18558d2c3c64ff09367adb976c56f",
+      "skills": [
+        {
+          "name": "accessibility-skill",
+          "path": "accessibility-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-ai-augmented",
+          "path": "api-skill/ai-based-api",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-analyzer",
+          "path": "api-skill/api-analyzer",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-compliance-checker",
+          "path": "api-skill/api-compliance",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-documentation",
+          "path": "api-skill/api-documentation",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-health-monitoring",
+          "path": "api-skill/api-health-monitoring",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-inferrer-from-files",
+          "path": "api-skill/api-inference-from-files",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-integration",
+          "path": "api-skill/api-integration-helper",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-mock-helper",
+          "path": "api-skill/api-mocking",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-rate-limiting-helper",
+          "path": "api-skill/api-ratelimit-helper",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-sdk-generator",
+          "path": "api-skill/api-sdk-generator",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-security-auth-pattern",
+          "path": "api-skill/api-security-patterns",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-to-testcase-generator",
+          "path": "api-skill/api-to-testcase-generator",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-versioning-helper",
+          "path": "api-skill/api-versioning-helper",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-graphql-grpc",
+          "path": "api-skill/graphql-grpc-helper",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "newman-cicd-integration",
+          "path": "api-skill/newman/newman-cicd-helper",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "newman-report-analyzer",
+          "path": "api-skill/newman/newman-report-analyzer",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "newman-script-helper",
+          "path": "api-skill/newman/newman-script-helper",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "openapi-spec-generator",
+          "path": "api-skill/openapi-spec-generator",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "api-fetcher-specific-domains",
+          "path": "api-skill/popular-api-fetcher",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "postman-collection-generator",
+          "path": "api-skill/postman/postman-collection-generator",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "postman-openapi-converter",
+          "path": "api-skill/postman/postman-openapi-converter",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "postman-test-script-generator",
+          "path": "api-skill/postman/postman-testcase-generator",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "postman-newman-automation",
+          "path": "api-skill/postman/postman-to-newman",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "appium-skill",
+          "path": "appium-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "behat-skill",
+          "path": "behat-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "behave-skill",
+          "path": "behave-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "capybara-skill",
+          "path": "capybara-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "cicd-pipeline-skill",
+          "path": "cicd-pipeline-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "codeception-skill",
+          "path": "codeception-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "cucumber-skill",
+          "path": "cucumber-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "cypress-skill",
+          "path": "cypress-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "detox-skill",
+          "path": "detox-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "espresso-skill",
+          "path": "espresso-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "flutter-testing-skill",
+          "path": "flutter-testing-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "gauge-skill",
+          "path": "gauge-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "geb-skill",
+          "path": "geb-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "hyperexecute-skill",
+          "path": "hyperexecute-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "jasmine-skill",
+          "path": "jasmine-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "jest-skill",
+          "path": "jest-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "junit-5-skill",
+          "path": "junit-5-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "karma-skill",
+          "path": "karma-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "laravel-dusk-skill",
+          "path": "laravel-dusk-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "lettuce-skill",
+          "path": "lettuce-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "mocha-skill",
+          "path": "mocha-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "mstest-skill",
+          "path": "mstest-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "nemojs-skill",
+          "path": "nemojs-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "nightwatchjs-skill",
+          "path": "nightwatchjs-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "nunit-skill",
+          "path": "nunit-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "phpunit-skill",
+          "path": "phpunit-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "playwright-skill",
+          "path": "playwright-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "protractor-skill",
+          "path": "protractor-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "puppeteer-skill",
+          "path": "puppeteer-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "pytest-skill",
+          "path": "pytest-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "reqnroll-skill",
+          "path": "reqnroll-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "robot-framework-skill",
+          "path": "robot-framework-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "rspec-skill",
+          "path": "rspec-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "selenide-skill",
+          "path": "selenide-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "selenium-skill",
+          "path": "selenium-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "serenity-bdd-skill",
+          "path": "serenity-bdd-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "smartui-skill",
+          "path": "smartui-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "specflow-skill",
+          "path": "specflow-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "test-framework-migration-skill",
+          "path": "test-framework-migration-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "testcafe-skill",
+          "path": "testcafe-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "testng-skill",
+          "path": "testng-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "testunit-skill",
+          "path": "testunit-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "unittest-skill",
+          "path": "unittest-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "vitest-skill",
+          "path": "vitest-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "webdriverio-skill",
+          "path": "webdriverio-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "xcuitest-skill",
+          "path": "xcuitest-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        },
+        {
+          "name": "xunit-skill",
+          "path": "xunit-skill",
+          "profiles": [
+            "backend",
+            "frontend",
+            "server"
+          ]
+        }
+      ]
     }
   ],
   "deferred_sources": [
@@ -314,6 +1727,7 @@
     }
   ],
   "deferred_project_tools": [
+    { "repo": "balyakin/skill-eval-runner", "ref": "b957be87d76c6718d74f601cefb0297fc9ca242e", "reason": "CLI test runner; the repository has no production standalone SKILL.md." },
     { "repo": "storybookjs/storybook", "ref": "a14aa35ff6f9dcf3af2c836cd73c7c18fd0bd99f" },
     { "repo": "chromaui/chromatic-cli", "ref": "7725993081614454b54b73bdfb3d987773ba6d2a" },
     { "repo": "changesets/changesets", "ref": "bed458124f623463c581521ab56d040eba2a8b20" },
