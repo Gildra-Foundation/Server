@@ -42,8 +42,10 @@ installer frontmatter checks.
 No server daemon, application, database, network listener, production data, or
 secret was changed. A new Codex process is needed to refresh its skill index.
 
-Publication is subject to the existing GitHub credential block: the available
-SSH deploy key is read-only and the GitHub connector rejects repository writes.
+The revision is published to the GitHub branch
+`chore/codex-review-action` at commit `8a1bbbb532b291cde1a78defa3e605961e566deb`.
+The default `main` branch was not changed. CI and pull-request review remain
+pending until a pull request is opened.
 
 ## Recovery
 

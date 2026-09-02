@@ -52,9 +52,10 @@ catalog passed the 121-entry check. The two user profiles contain the seven new
 standalone skills plus the local rules adapter. No server daemon, application,
 database, network listener, production data, or secret was changed.
 
-Publication of this revision is pending a write-capable GitHub credential; the
-currently available deploy key is read-only and the GitHub connector rejects
-repository writes. The local branch and commit remain safe to review and push.
+The revision is published to the GitHub branch
+`chore/codex-review-action` at commit `8a1bbbb532b291cde1a78defa3e605961e566deb`.
+The default `main` branch was not changed. CI and pull-request review remain
+pending until a pull request is opened.
 
 ## Recovery
 
