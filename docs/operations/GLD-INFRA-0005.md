@@ -47,9 +47,10 @@ contains 14 compact (`mini`) references and passed the same validator.
 The lock manifest passes JSON and manager manifest validation. A fresh catalog
 installation from all 121 pinned entries completed successfully and
 `--check-catalog` verified all 121 `SKILL.md` files and provenance markers. The
-two user profiles contain the seven new standalone skills plus the local rules
-adapter. No server daemon, application, database, network listener, production
-data, or secret was changed.
+same seven entries were then installed into both real user catalogs and each
+catalog passed the 121-entry check. The two user profiles contain the seven new
+standalone skills plus the local rules adapter. No server daemon, application,
+database, network listener, production data, or secret was changed.
 
 Publication of this revision is pending a write-capable GitHub credential; the
 currently available deploy key is read-only and the GitHub connector rejects
