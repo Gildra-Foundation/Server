@@ -53,9 +53,11 @@ standalone skills plus the local rules adapter. No server daemon, application,
 database, network listener, production data, or secret was changed.
 
 The revision is published to the GitHub branch
-`chore/codex-review-action` at commit `8a1bbbb532b291cde1a78defa3e605961e566deb`.
-The default `main` branch was not changed. CI and pull-request review remain
-pending until a pull request is opened.
+`chore/codex-review-action` and has been fast-forwarded to the default
+`main` branch at commit `92a41ff6068a254adcc9edb483dad010aba5398c`.
+The feature branch and `main` currently point to the same revision. The
+pull-request review workflow is not applicable to this direct fast-forward;
+push-triggered validation remains subject to the GitHub Actions run.
 
 ## Recovery
 
