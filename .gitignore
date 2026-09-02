@@ -19,3 +19,6 @@ artifacts/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Serena generates project state per OS user
+.serena/
