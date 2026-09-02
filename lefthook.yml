@@ -1,0 +1,7 @@
+min_version: 2.1.9
+
+pre-commit:
+  parallel: true
+  commands:
+    pre-commit:
+      run: pre-commit run --hook-stage pre-commit

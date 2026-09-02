@@ -1,11 +1,11 @@
 SHELL := /bin/bash
 
 .DEFAULT_GOAL := check
-.PHONY: check check-frontend check-backend check-api check-security
+.PHONY: check check-frontend check-backend check-api check-workflows check-security
 
 # Run the checks that match the repository. Empty stacks are skipped so this
 # infrastructure repository can use the same entry point as application repos.
-check: check-frontend check-backend check-api
+check: check-frontend check-backend check-api check-workflows
 
 check-frontend:
 	@set -euo pipefail; \
@@ -72,6 +72,15 @@ check-api:
 	else \
 		echo '[skip] API: buf.yaml not found'; \
 	fi
+
+check-workflows:
+	@set -euo pipefail; \
+	if ! find .github/workflows -type f \( -name '*.yml' -o -name '*.yaml' \) -print -quit 2>/dev/null | grep -q .; then \
+		echo '[skip] workflows: no GitHub Actions workflow files found'; \
+		exit 0; \
+	fi; \
+	command -v actionlint >/dev/null || { echo '[fail] workflows: actionlint is not installed'; exit 1; }; \
+	actionlint
 
 # Opt-in because filesystem vulnerability and secret scans can be expensive.
 check-security:
