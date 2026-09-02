@@ -1,0 +1,44 @@
+name: Codex review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# Keep the default token read-only. The review job grants only the comment
+# permissions required by the Codex review action.
+permissions:
+  contents: read
+
+concurrency:
+  group: codex-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    # Do not expose OPENAI_API_KEY to fork code. Fork PRs remain covered by the
+    # regular validation workflow and can be reviewed manually by a maintainer.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Check out reviewed revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Run Codex review
+        uses: gersmann/codex-review-action@7e51a535f96ff2cde02cf88d95d7e20656dff324 # v1.8.4
+        with:
+          mode: review
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          model: gpt-5.6-sol
+          reasoning_effort: low
+          web_search_mode: disabled
+          debug_level: "0"
+          stream_agent_messages: "0"
