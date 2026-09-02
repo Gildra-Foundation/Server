@@ -286,7 +286,8 @@
       "repo": "softaworks/agent-toolkit",
       "ref": "3027f20f3181758385a1bb8c022d4041dfb4de84",
       "skills": [
-        { "name": "dependency-updater", "path": "skills/dependency-updater", "profiles": ["backend", "frontend", "server"] }
+        { "name": "dependency-updater", "path": "skills/dependency-updater", "profiles": ["backend", "frontend", "server"] },
+        { "name": "design-system-starter", "path": "skills/design-system-starter", "profiles": ["design", "frontend"] }
       ]
     },
     {
@@ -1747,6 +1748,27 @@
       "ref": "e875a6bfff809e5d42c584104031e36e1f014f18",
       "skills": [
         { "name": "react-patterns", "path": "plugins/frontend/skills/react-patterns", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "mblode/agent-skills",
+      "ref": "ac090cd9dc16346258763fa9cbff1c29dd466277",
+      "skills": [
+        { "name": "ui-design", "path": "skills/ui-design", "profiles": ["design", "frontend"] }
+      ]
+    },
+    {
+      "repo": "nutlope/hallmark",
+      "ref": "13ac0ec7e148655948100b6396439e481361d690",
+      "skills": [
+        { "name": "hallmark", "path": "skills/hallmark", "profiles": ["design", "frontend"] }
+      ]
+    },
+    {
+      "repo": "arvindrk/extract-design-system",
+      "ref": "1873741ba8dea755e35e6e15134f7918cd58e036",
+      "skills": [
+        { "name": "extract-design-system", "path": "skills/extract-design-system", "profiles": ["design", "frontend"] }
       ]
     }
   ],
