@@ -257,6 +257,37 @@
         { "name": "improve-codebase-architecture", "path": "skills/engineering/improve-codebase-architecture", "profiles": ["backend", "frontend", "server"] },
         { "name": "resolving-merge-conflicts", "path": "skills/engineering/resolving-merge-conflicts", "profiles": ["backend", "frontend", "server"] }
       ]
+    },
+    {
+      "repo": "addyosmani/agent-skills",
+      "ref": "d2c37ef6225dd8726cdd369a8030307f48592d26",
+      "skills": [
+        { "name": "api-and-interface-design", "path": "skills/api-and-interface-design", "profiles": ["backend", "frontend", "server"] },
+        { "name": "ci-cd-and-automation", "path": "skills/ci-cd-and-automation", "profiles": ["backend", "server"] },
+        { "name": "context-engineering", "path": "skills/context-engineering", "profiles": ["backend", "frontend", "server"] },
+        { "name": "documentation-and-adrs", "path": "skills/documentation-and-adrs", "profiles": ["backend", "frontend", "server"] },
+        { "name": "frontend-ui-engineering", "path": "skills/frontend-ui-engineering", "profiles": ["frontend"] },
+        { "name": "git-workflow-and-versioning", "path": "skills/git-workflow-and-versioning", "profiles": ["backend", "frontend", "server"] },
+        { "name": "performance-optimization", "path": "skills/performance-optimization", "profiles": ["backend", "frontend", "server"] },
+        { "name": "planning-and-task-breakdown", "path": "skills/planning-and-task-breakdown", "profiles": ["backend", "frontend", "server"] },
+        { "name": "source-driven-development", "path": "skills/source-driven-development", "profiles": ["backend", "frontend", "server"] },
+        { "name": "using-agent-skills", "path": "skills/using-agent-skills", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "YurunChen/repo-docs-skills",
+      "ref": "52674499dce957deb146fa51363f6e8e42802097",
+      "skills": [
+        { "name": "repo-docs", "path": "skills/repo-docs", "profiles": ["backend", "frontend", "server"] },
+        { "name": "repo-docs-zh", "path": "skills/repo-docs-zh", "profiles": ["backend", "frontend", "server"] }
+      ]
+    },
+    {
+      "repo": "softaworks/agent-toolkit",
+      "ref": "3027f20f3181758385a1bb8c022d4041dfb4de84",
+      "skills": [
+        { "name": "dependency-updater", "path": "skills/dependency-updater", "profiles": ["backend", "frontend", "server"] }
+      ]
     }
   ],
   "deferred_sources": [
