@@ -1770,6 +1770,39 @@
       "skills": [
         { "name": "extract-design-system", "path": "skills/extract-design-system", "profiles": ["design", "frontend"] }
       ]
+    },
+    {
+      "repo": "AgriciDaniel/codex-seo",
+      "ref": "9a4a0b9e3c44eec2ceedcc21d10659427ee3bc1c",
+      "skills": [
+        { "name": "codex-seo", "path": "skills/seo", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-audit", "path": "skills/seo-audit", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-backlinks", "path": "skills/seo-backlinks", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-cluster", "path": "skills/seo-cluster", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-competitor-pages", "path": "skills/seo-competitor-pages", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-content", "path": "skills/seo-content", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-dataforseo", "path": "skills/seo-dataforseo", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-drift", "path": "skills/seo-drift", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-ecommerce", "path": "skills/seo-ecommerce", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-firecrawl", "path": "skills/seo-firecrawl", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-flow", "path": "skills/seo-flow", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-geo", "path": "skills/seo-geo", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-google", "path": "skills/seo-google", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-hreflang", "path": "skills/seo-hreflang", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-image-gen", "path": "skills/seo-image-gen", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-images", "path": "skills/seo-images", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-local", "path": "skills/seo-local", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-maps", "path": "skills/seo-maps", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-page", "path": "skills/seo-page", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-performance", "path": "skills/seo-performance", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-plan", "path": "skills/seo-plan", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-programmatic", "path": "skills/seo-programmatic", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-schema", "path": "skills/seo-schema", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-sitemap", "path": "skills/seo-sitemap", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-sxo", "path": "skills/seo-sxo", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-technical", "path": "skills/seo-technical", "profiles": ["backend", "frontend", "server"] },
+        { "name": "seo-visual", "path": "skills/seo-visual", "profiles": ["backend", "frontend", "server"] }
+      ]
     }
   ],
   "deferred_sources": [

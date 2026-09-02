@@ -110,32 +110,49 @@ def install_catalog(data: dict, skills: dict[str, dict], installer: Path, catalo
                 validate_skill_dir(existing, skills[item["name"]], require_marker=True)
         if not missing:
             continue
-        command = [
-            sys.executable,
-            str(installer),
-            "--repo",
-            source["repo"],
-            "--ref",
-            source["ref"],
-            "--dest",
-            str(catalog),
-            "--method",
-            "download",
-            "--path",
-            *[item["path"] for item in missing],
-        ]
-        print(f"Installing {len(missing)} skill(s) from {source['repo']}@{source['ref']}")
-        subprocess.run(command, check=True)
-        for item in missing:
-            skill_dir = catalog / Path(item["path"]).name
-            expected_dir = catalog / item["name"]
-            if skill_dir != expected_dir:
-                if expected_dir.exists():
-                    fail(f"catalog name collision: {expected_dir}")
-                skill_dir.rename(expected_dir)
-            validate_skill_dir(expected_dir, skills[item["name"]], require_marker=False)
-            marker = {key: skills[item["name"]][key] for key in ("name", "repo", "ref", "path")}
-            (expected_dir / MARKER).write_text(json.dumps(marker, indent=2) + "\n", encoding="utf-8")
+        natural = [item for item in missing if Path(item["path"]).name == item["name"]]
+        renamed = [item for item in missing if Path(item["path"]).name != item["name"]]
+
+        def install_items(items: list[dict], custom_names: bool = False) -> None:
+            if not items:
+                return
+            if custom_names:
+                batches = [[item] for item in items]
+            else:
+                batches = [items]
+            for batch in batches:
+                command = [
+                    sys.executable,
+                    str(installer),
+                    "--repo",
+                    source["repo"],
+                    "--ref",
+                    source["ref"],
+                    "--dest",
+                    str(catalog),
+                    "--method",
+                    "download",
+                    "--path",
+                    *[item["path"] for item in batch],
+                ]
+                if custom_names:
+                    command.extend(["--name", batch[0]["name"]])
+                print(f"Installing {len(batch)} skill(s) from {source['repo']}@{source['ref']}")
+                subprocess.run(command, check=True)
+                for item in batch:
+                    expected_dir = catalog / item["name"]
+                    if not custom_names:
+                        skill_dir = catalog / Path(item["path"]).name
+                        if skill_dir != expected_dir:
+                            if expected_dir.exists():
+                                fail(f"catalog name collision: {expected_dir}")
+                            skill_dir.rename(expected_dir)
+                    validate_skill_dir(expected_dir, skills[item["name"]], require_marker=False)
+                    marker = {key: skills[item["name"]][key] for key in ("name", "repo", "ref", "path")}
+                    (expected_dir / MARKER).write_text(json.dumps(marker, indent=2) + "\n", encoding="utf-8")
+
+        install_items(natural)
+        install_items(renamed, custom_names=True)
 
 
 def activate_profile(profile: str, skills: dict[str, dict], catalog: Path, active: Path) -> None:
