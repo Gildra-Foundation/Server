@@ -144,11 +144,14 @@ chat transcripts.
 current `chore/codex-review-action` branch to the configured `Server` remote.
 
 **Acceptance criteria:**
-- [ ] The branch contains the policy commits and validator.
-- [ ] The remote branch advances without force-push.
-- [ ] The handoff records the pushed commit and remote status.
+- [x] The branch contains the policy commits and validator.
+- [x] The remote branch advances without force-push.
+- [x] The handoff records the pushed commit and remote status.
 
 **Verification:** `git ls-remote` matches the pushed commit.
+
+**Result:** Published as `f05942459001961bdc6162b84dc7362392835f74` on
+`origin/chore/codex-review-action`; no deployment performed.
 
 **Dependencies:** Task 4
 

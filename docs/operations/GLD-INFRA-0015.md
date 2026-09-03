@@ -1,6 +1,6 @@
 # GLD-INFRA-0015 — Response validator and policy publication
 
-Status: `in progress`
+Status: `applied`
 
 - Owner: Gildra project owner
 - Environment: Server repository agent workflow
@@ -37,7 +37,10 @@ completed.
 
 ## Publication gate
 
-The current branch is `chore/codex-review-action` and contains local
-policy/tooling commits ahead of its remote tracking branch. The requested
-normal push will publish the complete local branch history; no force-push,
-merge, deploy, or production mutation is part of this operation.
+The current branch is `chore/codex-review-action` and contains the complete
+policy/tooling history. A normal non-force push published it successfully:
+
+- Pushed commit: `f05942459001961bdc6162b84dc7362392835f74`
+- Remote: `origin/chore/codex-review-action`
+- Verification: `git ls-remote` matched the local commit
+- No merge, deploy, or production mutation was performed.

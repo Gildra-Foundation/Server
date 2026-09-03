@@ -9,7 +9,7 @@
 
 - [x] Add and test the optional response-format validator.
 - [x] Commit the validator and policy updates.
-- [ ] Push `chore/codex-review-action` to the `Server` remote and verify its SHA.
+- [x] Push `chore/codex-review-action` to the `Server` remote and verify its SHA.
 
 ## Checkpoint
 
