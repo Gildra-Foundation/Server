@@ -114,3 +114,44 @@ and the complete diff; commit only the server-repository changes.
 
 - Application repositories will later add their own project-local checks; this
   server contract must remain the cross-repository baseline.
+
+## Follow-up: response validation and publication
+
+### Task 4: Add an optional response-format checker — complete
+
+**Description:** Provide a small local validator for saved agent responses. It
+checks the concise contract without attempting to infer quality or inspect live
+chat transcripts.
+
+**Acceptance criteria:**
+- [x] A valid response contains an outcome, `Push`, `Deploy`, and next steps.
+- [x] Invalid or overlong responses fail with actionable diagnostics.
+- [x] The checker is opt-in and does not block unrelated repository checks.
+
+**Verification:** Run valid and invalid fixture strings through the checker and
+`make check-agent-response`.
+
+**Dependencies:** Existing response contract in `AGENTS.md`.
+
+**Files likely touched:** `scripts/validate-agent-response.py`, `Makefile`,
+`AGENTS.md`, `docs/runbooks/agent-execution.md`
+
+**Estimated scope:** Medium: 3-5 files
+
+### Task 5: Publish the policy branch
+
+**Description:** Commit the validator and policy documentation, then push the
+current `chore/codex-review-action` branch to the configured `Server` remote.
+
+**Acceptance criteria:**
+- [ ] The branch contains the policy commits and validator.
+- [ ] The remote branch advances without force-push.
+- [ ] The handoff records the pushed commit and remote status.
+
+**Verification:** `git ls-remote` matches the pushed commit.
+
+**Dependencies:** Task 4
+
+**Files likely touched:** Repository history only.
+
+**Estimated scope:** Small: no source files beyond Task 4

@@ -226,6 +226,16 @@ Use fewer lines for a small task. Do not paste terminal logs, repeat the plan,
 or hide a failed check behind “done”. Offer two or three concrete next actions;
 if blocked, replace the options with the exact user action needed to unblock.
 
+For a saved response, the optional local shape check is:
+
+```bash
+make check-agent-response AGENT_RESPONSE_FILE=/path/to/response.md
+```
+
+It validates the outcome line, explicit `Push`/`Deploy` statuses, and two or
+three numbered next-step options. It does not prove that the reported work or
+checks are true; those still require repository and symbiosis evidence.
+
 ## Safety boundary
 
 This runbook does not authorize installation of new host packages, production

@@ -178,6 +178,9 @@ not a transcript of the work:
    user action needed to continue. Never imply completion when a check failed.
 6. Reply in the user's language unless they request another language. Never
    include secrets, raw credentials, or unnecessary internal trace details.
+7. When a response is saved for review, run the optional shape check with
+   `make check-agent-response AGENT_RESPONSE_FILE=<path>`. This validates the
+   required fields, not the truth of the reported work.
 
 Do not claim that Gildra is production-ready merely because automation completed.
 Acceptance evidence is defined in `docs/deployment-plan.md`.

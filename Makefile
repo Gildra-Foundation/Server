@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 .DEFAULT_GOAL := check
-.PHONY: check check-frontend check-backend check-api check-workflows check-security
+.PHONY: check check-frontend check-backend check-api check-workflows check-security check-agent-response
 
 # Run the checks that match the repository. Empty stacks are skipped so this
 # infrastructure repository can use the same entry point as application repos.
@@ -93,3 +93,13 @@ check-security:
 	command -v semgrep >/dev/null || { echo '[fail] security: semgrep is not installed'; exit 1; }; \
 	trivy fs --scanners vuln,secret,misconfig .; \
 	semgrep --config auto .
+
+# Optional because a live Codex response is not stored in the repository.
+# Usage: make check-agent-response AGENT_RESPONSE_FILE=/path/to/response.md
+check-agent-response:
+	@set -euo pipefail; \
+	if [[ -z "$${AGENT_RESPONSE_FILE:-}" ]]; then \
+		echo '[skip] agent response: set AGENT_RESPONSE_FILE to validate a saved response'; \
+		exit 0; \
+	fi; \
+	python3 scripts/validate-agent-response.py "$${AGENT_RESPONSE_FILE}"
