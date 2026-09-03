@@ -20,5 +20,5 @@
 
 - [x] Add the pre-task `gpt-5.6-luna` context-scout gate.
 - [x] Add the post-change `gpt-5.6-luna` reviewer/documenter gate.
-- [ ] Run the root quality gate and record the two-pass evidence.
-- [ ] Commit locally; push only after an explicit target/approval.
+- [x] Run the root quality gate and record the two-pass evidence.
+- [x] Commit locally; push remains pending an explicit target/approval.

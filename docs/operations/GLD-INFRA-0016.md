@@ -1,6 +1,6 @@
 # GLD-INFRA-0016 — Mandatory Luna context and review workflow
 
-Status: `in progress`
+Status: `applied`
 
 - Owner: Gildra project owner
 - Environment: Server repository agent workflow
@@ -50,9 +50,9 @@ does not require live library, browser, GitHub, Sentry, or Cloudflare context.
 
 ## Verification and publication
 
-The reviewer pass and root checks are recorded below before this card moves to
-`applied`. This task does not authorize a GitHub push or deployment; the local
-commit and branch will be reported explicitly.
+The reviewer pass and root checks are recorded below. This task does not
+authorize a GitHub push or deployment; the local commit and branch are reported
+explicitly.
 
 ### Luna reviewer pass
 
@@ -80,6 +80,15 @@ Completed by the root session after resolving/accepting all Luna findings:
 - Symbiosis `check-paths`: passed with no conflicts for all claimed paths.
 - No source, generated, secret, production, or sibling-repository files were
   changed.
+
+## Final state
+
+- Commit: `ef6a720` (`chore: require Luna context and code review`)
+- Branch: `chore/codex-review-action`
+- Push: not performed; no target/approval was included in this request.
+- Deploy: not performed.
+- Handoff: published after the final documentation commit; session locks
+  released.
 
 ## Risks
 

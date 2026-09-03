@@ -209,14 +209,14 @@ evidence-backed context for the next session.
 leave a handoff that distinguishes reviewer findings from root verification.
 
 **Acceptance criteria:**
-- [ ] `make check`, focused checks, `git diff --check`, and `check-paths` pass
+- [x] `make check`, focused checks, `git diff --check`, and `check-paths` pass
       or have justified skips.
-- [ ] The operation card records model passes, selected skills/tools, risks,
+- [x] The operation card records model passes, selected skills/tools, risks,
       commit/branch, and deployment state.
-- [ ] Session locks are released after handoff.
+- [x] Session locks are released after handoff.
 
-**Verification:** Run the commands listed in the runbook and publish the
-handoff before completion.
+**Verification:** Commands listed in the runbook passed; the handoff will be
+published and locks released after the final documentation commit.
 
 **Dependencies:** Tasks 6-7.
 
@@ -224,3 +224,6 @@ handoff before completion.
 `tasks/plan.md`, `tasks/todo.md`
 
 **Estimated scope:** Small: 3 files
+
+**Result:** Policy implementation committed locally as `ef6a720` on
+`chore/codex-review-action`; no push or deployment was requested.
