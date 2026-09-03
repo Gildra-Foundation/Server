@@ -91,6 +91,41 @@ This section is the binding entry point for every Codex session working in this
 repository. The detailed routing matrix and evidence format live in
 [`docs/runbooks/agent-execution.md`](docs/runbooks/agent-execution.md).
 
+### Core engineering principles
+
+Apply these principles to every implementation, infrastructure, and data task:
+
+1. **Think before coding.** State material assumptions before acting. When a
+   requirement is materially ambiguous, ask a focused question instead of
+   guessing. If work can proceed safely, record the assumption. Show viable
+   solution options, explain their trade-offs, and say plainly what is not
+   understood or verified.
+2. **Prefer simplicity.** Implement the smallest safe solution that satisfies
+   the acceptance criteria. Avoid unnecessary functions, premature
+   abstractions, speculative flexibility, configuration, and architecture. Do
+   not write a large framework for a small requirement. Simplicity never
+   overrides security, repository boundaries, required tests, or architecture
+   constraints.
+3. **Make surgical changes.** Touch only paths related to the task. Do not add
+   opportunistic refactors, change neighboring code without a reason, or alter
+   the established project style. Do not delete old unused code without
+   authorization; remove only imports/functions that became dead because of
+   the current change. Record intentionally untouched areas when they are
+   relevant to review.
+4. **Work toward verifiable goals.** Every task needs a concrete success
+   criterion and an evidence-producing check appropriate to the change. For
+   infrastructure or documentation, that may be a configuration, lint,
+   schema, health, or reproducible verification rather than an artificial unit
+   test. A bug fix starts with a
+   reproducing regression test; validation changes include invalid-input tests;
+   refactors preserve tests before and after; and multi-step work has a plan,
+   an acceptance check for each stage, and a final end-to-end check. The only
+   exception is an approved emergency mitigation: record why the reproducer
+   could not precede the change, make the smallest reversible fix, preserve
+   rollback/health evidence, and add the regression test in the same follow-up
+   change before closing the incident. Never use “looks right” as the only
+   completion criterion.
+
 ### Mandatory Luna orchestration
 
 For every repository or production task (excluding a pure conversational

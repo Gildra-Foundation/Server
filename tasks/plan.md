@@ -227,3 +227,30 @@ published and locks released after the final documentation commit.
 
 **Result:** Policy implementation committed locally as `ef6a720` on
 `chore/codex-review-action`; no push or deployment was requested.
+
+## Follow-up: core engineering principles
+
+### Task 9: Add think-simple-surgical-verifiable rules
+
+**Description:** Add a concise, enforceable decision and implementation
+contract to the server instructions and runbook.
+
+**Acceptance criteria:**
+- [x] The contract requires assumptions, material-ambiguity questions, options,
+      trade-offs, and explicit unknowns before coding.
+- [x] The contract requires the smallest safe design and surgical diffs without
+      opportunistic refactoring or unauthorized deletion.
+- [x] The contract maps bug fixes, validation, refactors, and multi-step work
+      to concrete tests and stage-level acceptance checks, with a narrow
+      documented emergency-mitigation exception, while allowing applicable
+      config/lint/health evidence for infrastructure and documentation work.
+
+**Verification:** Luna context/review passes and the repository quality gate
+passed; evidence is recorded in `docs/operations/GLD-INFRA-0017.md`.
+
+**Dependencies:** Existing Luna orchestration and planning gates.
+
+**Files likely touched:** `AGENTS.md`, `docs/runbooks/agent-execution.md`,
+`tasks/plan.md`, `tasks/todo.md`, `docs/operations/GLD-INFRA-0017.md`
+
+**Estimated scope:** Medium: 5 files

@@ -22,3 +22,10 @@
 - [x] Add the post-change `gpt-5.6-luna` reviewer/documenter gate.
 - [x] Run the root quality gate and record the two-pass evidence.
 - [x] Commit locally; push remains pending an explicit target/approval.
+
+## Core engineering principles
+
+- [x] Add think-before-code, simplicity, surgical-change, and verifiable-goal
+  rules to the server contract and runbook.
+- [x] Run Luna review and record assumptions, options, trade-offs, and findings.
+- [x] Run the root quality gate, commit locally, and release the session.

@@ -81,6 +81,35 @@ The operation record/handoff must include both agent passes (model, scope,
 result), selected skills/MCP tools, skipped checks, and the root agent's final
 quality-gate evidence. Never treat a sub-agent's unverified claim as proof.
 
+## Core engineering principles
+
+Before implementation, the root agent records material assumptions, asks about
+material ambiguity, lists viable options with trade-offs, and names unknowns.
+For a safe non-blocking ambiguity, record the chosen assumption and why; for a
+material one, stop and ask the owner.
+
+Choose the smallest safe design that meets the acceptance criteria. Do not add
+speculative abstractions, configuration, flexibility, or unrelated refactors.
+Security controls, repository boundaries, architecture constraints, and
+required checks take precedence over a superficial reduction in lines.
+
+Keep the diff surgical: preserve local style, change only task-related paths,
+and do not delete old code without authorization. Imports and functions made
+dead by the current change may be removed. For review, note important areas
+intentionally left untouched.
+
+Write a checkable goal for every task and choose evidence appropriate to its
+change type. Infrastructure and documentation tasks may use configuration,
+lint, schema, health, or reproducible checks instead of inventing an irrelevant
+unit test. Bug fixes require a reproducing test before the fix; validation
+changes require invalid-input tests; refactors need tests before and after; and
+multi-step work needs stage-level acceptance checks plus a final check. An
+approved emergency mitigation may make the smallest
+reversible change first only when the reason, rollback/health evidence, and a
+same-follow-up regression test are recorded before the incident is closed. The
+plan, Luna review, root quality gate, and handoff must carry the criteria and
+evidence; “looks right” is not evidence.
+
 ## Planning gate
 
 Use `planning-and-task-breakdown` for any multi-file change, feature, migration,
