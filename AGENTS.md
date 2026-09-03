@@ -161,5 +161,23 @@ repository. The detailed routing matrix and evidence format live in
   risks, and whether anything was deployed. “Tool installed” is not evidence
   that the tool was used; the handoff must contain the command and result.
 
+## Concise final response contract
+
+Keep user-facing answers short and factual. The response is a delivery summary,
+not a transcript of the work:
+
+1. Start with the outcome: `Готово`, `Частично готово`, or `Заблокировано`.
+2. State what was changed and the verification result in no more than a few
+   bullets. Mention important skips or risks, but omit routine tool logs.
+3. Always state the repository/branch and explicit `Push: да/нет` and
+   `Deploy: да/нет` status. If no push or deploy happened, say whether it was
+   not requested, not approved, or blocked.
+4. End with two or three concrete next-step options for the project. Keep them
+   actionable and ordered by likely value; do not add generic filler.
+5. If blocked, name the exact blocker, what was already checked, and the one
+   user action needed to continue. Never imply completion when a check failed.
+6. Reply in the user's language unless they request another language. Never
+   include secrets, raw credentials, or unnecessary internal trace details.
+
 Do not claim that Gildra is production-ready merely because automation completed.
 Acceptance evidence is defined in `docs/deployment-plan.md`.

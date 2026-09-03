@@ -205,6 +205,27 @@ An empty stack is a valid skip only when the expected file is absent. A missing
 binary, failed command, unavailable MCP, or unconfigured credential is not a
 pass and must remain visible in the handoff.
 
+## Final response format
+
+Use a compact delivery summary in the user's language:
+
+```text
+Готово/Частично готово/Заблокировано — one-line outcome.
+- Changed: the material files or behavior.
+- Checks: passed checks; relevant skips/risks only.
+- Push: да/нет (branch and commit; explain if not requested/approved/blocked).
+- Deploy: да/нет (target and observation state when applicable).
+
+Дальше:
+1. Highest-value next step.
+2. Alternative next step.
+3. Optional follow-up.
+```
+
+Use fewer lines for a small task. Do not paste terminal logs, repeat the plan,
+or hide a failed check behind “done”. Offer two or three concrete next actions;
+if blocked, replace the options with the exact user action needed to unblock.
+
 ## Safety boundary
 
 This runbook does not authorize installation of new host packages, production
