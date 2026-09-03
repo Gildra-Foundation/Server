@@ -158,3 +158,69 @@ current `chore/codex-review-action` branch to the configured `Server` remote.
 **Files likely touched:** Repository history only.
 
 **Estimated scope:** Small: no source files beyond Task 4
+
+## Follow-up: Luna context and review workflow
+
+### Task 6: Add the mandatory pre-task Luna context scout
+
+**Description:** Require a read-only `gpt-5.6-luna` context pass before skill
+selection or implementation, with shared-session evidence and an explicit
+fallback policy.
+
+**Acceptance criteria:**
+- [x] `AGENTS.md` requires a Luna context scout before skills are selected.
+- [x] The runbook defines read-only scope, required brief, and no silent skip.
+- [x] Fallback and production/shared-database blocking behavior are explicit.
+
+**Verification:** Context scout handoff reviewed; contract and repository checks
+passed.
+
+**Dependencies:** Existing symbiosis and skill-routing gates.
+
+**Files likely touched:** `AGENTS.md`, `docs/runbooks/agent-execution.md`,
+`tasks/plan.md`, `tasks/todo.md`
+
+**Estimated scope:** Medium: 4 files
+
+### Task 7: Add the post-change Luna reviewer/documenter
+
+**Description:** Require a fresh `gpt-5.6-luna` pass after implementation to
+check code quality and architecture, update claimed documentation, and provide
+evidence-backed context for the next session.
+
+**Acceptance criteria:**
+- [x] The reviewer checks errors, bugs, tests, cleanliness, and architecture.
+- [x] Documentation writes are limited to explicitly claimed paths.
+- [x] Findings, fixes/acceptance, and selected tools are recorded in handoff.
+
+**Verification:** Luna review completed and recorded in
+`docs/operations/GLD-INFRA-0016-luna-review.md` and the operation card.
+
+**Dependencies:** Task 6.
+
+**Files likely touched:** `AGENTS.md`, `docs/runbooks/agent-execution.md`,
+`docs/operations/GLD-INFRA-0016.md`
+
+**Estimated scope:** Medium: 3 files
+
+### Task 8: Root quality gate and continuation point
+
+**Description:** Verify the complete policy diff, run repository checks, and
+leave a handoff that distinguishes reviewer findings from root verification.
+
+**Acceptance criteria:**
+- [ ] `make check`, focused checks, `git diff --check`, and `check-paths` pass
+      or have justified skips.
+- [ ] The operation card records model passes, selected skills/tools, risks,
+      commit/branch, and deployment state.
+- [ ] Session locks are released after handoff.
+
+**Verification:** Run the commands listed in the runbook and publish the
+handoff before completion.
+
+**Dependencies:** Tasks 6-7.
+
+**Files likely touched:** `docs/operations/GLD-INFRA-0016.md`,
+`tasks/plan.md`, `tasks/todo.md`
+
+**Estimated scope:** Small: 3 files

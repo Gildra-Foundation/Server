@@ -91,6 +91,47 @@ This section is the binding entry point for every Codex session working in this
 repository. The detailed routing matrix and evidence format live in
 [`docs/runbooks/agent-execution.md`](docs/runbooks/agent-execution.md).
 
+### Mandatory Luna orchestration
+
+For every repository or production task (excluding a pure conversational
+answer), follow this order. Do not silently skip a stage:
+
+0. **Context scout before implementation.** Spawn an isolated sub-agent with
+   the requested model `gpt-5.6-luna` (5.6 Luna) before selecting skills or
+   touching task files. Give it read-only access to the repository and shared
+   symbiosis state. It must inspect the current worktree, active tasks, locks,
+   latest handoff, relevant project documents, and the files likely to change.
+   Its brief must state the objective, constraints, cross-session conflicts,
+   relevant files, unknowns, and proposed checks. It must not edit, commit,
+   push, deploy, or change credentials.
+1. **Select skills and tools after the brief.** The root agent chooses the
+   smallest relevant skill set and MCP/plugin tools, reads each selected
+   `SKILL.md`, and records selected capabilities plus justified skips in the
+   plan or handoff. The context scout's assumptions are evidence to verify,
+   not permission to act.
+2. **Implement in the root session.** Re-check symbiosis ownership, claim exact
+   paths, and make small reviewable changes under the selected instructions.
+3. **Luna review and documentation.** After implementation, spawn a fresh
+   `gpt-5.6-luna` sub-agent. It checks the current diff for small errors, bugs,
+   missing tests, cleanliness, and architecture drift; runs only bounded
+   read-only checks; and writes or updates documentation only in explicitly
+   claimed documentation paths. It returns findings with severity, path,
+   evidence, and concrete fixes/context for the next session. It must not
+   commit, push, deploy, or change production state.
+4. **Root quality gate.** Before declaring completion, the root agent reviews
+   the Luna findings, resolves or explicitly accepts each issue, and checks
+   code for errors, bugs, dead/generated files, secrets, test coverage,
+   coupling, and architectural consistency. Run `make check` plus all focused
+   checks from the routing matrix, then inspect the complete diff and run
+   `git diff --check` and symbiosis `check-paths`.
+
+If `gpt-5.6-luna` is unavailable, record the exact fallback model and why. Do
+not silently omit the context or review stage; production mutations and shared
+database changes are blocked until an approved reviewer is available. For an
+isolated documentation-only change, an approved fallback may proceed only when
+the operation record explicitly records the degraded mode and follow-up Luna
+review.
+
 ### 1. Start with shared context
 
 - Read this file, `README.md`, `docs/project-context.md`,

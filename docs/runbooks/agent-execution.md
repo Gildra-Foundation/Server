@@ -36,6 +36,51 @@ If the shared state root is inaccessible, do not restart services, deploy,
 change DNS/firewall/SSH, migrate a shared database, or import production data.
 Continue only with isolated repository work and record the degraded mode.
 
+## Luna context and review gate
+
+The root agent uses a two-pass Luna workflow for every repository or production
+task. A pure conversational answer is the only exclusion.
+
+### Pass 1: context scout (before skills)
+
+1. Spawn a fresh, isolated sub-agent requesting model `gpt-5.6-luna` (5.6
+   Luna).
+2. Give it read-only repository and symbiosis access. It reads the current
+   worktree, active tasks/locks/handoffs, relevant project docs, and likely
+   change paths.
+3. Require a short context brief with objective, constraints, other-session
+   conflicts, relevant files, unknowns, and proposed checks.
+4. The scout cannot edit, commit, push, deploy, or change credentials. The root
+   agent verifies its claims before acting.
+
+Only after this brief does the root agent select the minimum relevant skills and
+MCP/plugin tools, read their `SKILL.md` files, and record selected tools and
+justified skips in the plan or handoff.
+
+### Pass 2: reviewer/documenter (after implementation)
+
+1. Spawn a new `gpt-5.6-luna` sub-agent with a clean context and the current
+   diff, relevant source/tests, selected-tool evidence, and the latest shared
+   state.
+2. Ask it to check small errors, bugs, missing tests, dead/generated files,
+   cleanliness, coupling, and architecture drift. It may run bounded,
+   read-only checks.
+3. Ask it to write or update documentation only in paths it has claimed. It
+   must return findings as `severity → path → evidence → fix/context`, plus the
+   documentation files changed. It cannot commit, push, deploy, or mutate
+   production.
+4. The root agent resolves or explicitly accepts every finding, then runs the
+   final verification gate before reporting completion.
+
+If Luna cannot be started, record the exact fallback model and degraded mode.
+Production and shared-database work stops until the reviewer is available. A
+documentation-only change may use an approved fallback only when a follow-up
+Luna review is recorded in the operation card.
+
+The operation record/handoff must include both agent passes (model, scope,
+result), selected skills/MCP tools, skipped checks, and the root agent's final
+quality-gate evidence. Never treat a sub-agent's unverified claim as proof.
+
 ## Planning gate
 
 Use `planning-and-task-breakdown` for any multi-file change, feature, migration,
