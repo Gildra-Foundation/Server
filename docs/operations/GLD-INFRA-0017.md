@@ -76,7 +76,9 @@ Completed after the final Luna review:
 
 ## Final state
 
-- Implementation commit: pending final documentation commit.
+- Implementation commit: `7bc650d` (`docs: add core engineering principles`).
+- This operation card and the Luna review artifacts are included in the same
+  committed policy change.
 - Branch: `chore/codex-review-action`.
 - Push: not performed; no target/approval was included in this request.
 - Deploy: not performed.
