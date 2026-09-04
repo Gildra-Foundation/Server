@@ -335,3 +335,116 @@ path validation.
 | Generated graph exposes sensitive content | High | Use code-only extraction, explicit ignores, and pattern scans before publication. |
 | Framing policy breaks the embedded viewers | Medium | Allow only same-origin frames and verify both canvases in Chromium. |
 | Nginx recreation interrupts unrelated services | Medium | Recreate only nginx, keep a timestamped rollback, and smoke-test existing routes. |
+
+## Follow-up: automated graph refresh
+
+### Assumptions and decision
+
+- Refresh both repositories once per hour. A later timer override can change the
+  cadence without changing the publisher.
+- Track each repository's remote default branch, but fetch and build the exact
+  SHA resolved at the beginning of a run.
+- Run on the existing origin with a hardened systemd oneshot/timer. This avoids
+  introducing a CI deploy credential; both repositories are readable over
+  HTTPS.
+- Keep Graphify at the repository-locked commit
+  `33362d969292b57eda82f3fbd9eb5f3f5bc9bbc2` (`0.9.53`).
+- Unknown before deployment: actual first-run duration and peak memory on the
+  production host. The first manual service run and journal are the acceptance
+  evidence; the live symlink is not changed if generation or screening fails.
+
+### Requirement map
+
+| ID | Requirement | Evidence |
+|---|---|---|
+| REQ-001 | Hourly refresh with a no-op when both source SHAs, the template, and Graphify runtime are unchanged | Script integration test and timer state |
+| REQ-002 | Build immutable revisions without using sibling worktrees | Local bare-repository test and deployed manifest |
+| REQ-003 | Use the pinned Graphify commit/version | Pin file, runtime version check, and manifest |
+| REQ-004 | Reject malformed, empty, path-leaking, or credential-like generated artifacts | Failure-path tests and bounded artifact scans |
+| REQ-005 | Publish both viewers as one atomic release through a service-private bind mount | Symlink-preservation and successful-switch tests |
+| REQ-006 | Retain bounded rollback releases without deleting the active target | Retention integration test |
+| REQ-007 | Prevent overlapping runs and fail visibly through systemd | `flock`, unit verification, and journal/status checks |
+
+### Task 13: Implement and test the atomic publisher
+
+**Description:** Add a fail-fast Bash publisher that resolves remote default
+branches, checks out exact SHAs in temporary directories, generates and screens
+both Graphify viewers, and atomically switches a versioned release symlink.
+
+**Acceptance criteria:**
+- [x] Matching manifests produce a no-op without invoking Graphify.
+- [x] A generator or validation failure preserves the previous `current` link.
+- [x] A successful run publishes the selector, both viewers, and a source/runtime manifest.
+- [x] Retention keeps at most the configured number of releases and never removes `current`.
+
+**Verification:** `bash -n`, the Bash skill validator, and
+`scripts/test-refresh-graph-site.sh`.
+
+**Dependencies:** Existing dual-repository viewer and pinned Graphify source.
+
+**Files likely touched:** `scripts/refresh-graph-site.sh`,
+`scripts/test-refresh-graph-site.sh`, `graph-site/index.html`, `Makefile`
+
+**Estimated scope:** Medium: 3 files plus one reused template
+
+### Task 14: Add the hardened schedule and publishing contract
+
+**Description:** Add a systemd oneshot/timer, point nginx at the atomic
+`current` release, and document installation, operation, failure handling, and
+rollback.
+
+**Acceptance criteria:**
+- [ ] The timer is persistent, hourly, randomized, and cannot overlap itself.
+- [ ] The service has no capabilities and can write only graph state/runtime paths.
+- [ ] Nginx serves the release symlink through the existing read-only mount.
+- [ ] The runbook and operation card name exact checks and rollback steps.
+
+**Verification:** `systemd-analyze verify`, disposable and live `nginx -t`,
+operation gate, and production service/timer status.
+
+**Dependencies:** Task 13.
+
+**Files likely touched:** `deploy/graph-site/gildra-graph-refresh.service`,
+`deploy/graph-site/gildra-graph-refresh.timer`,
+`deploy/graph-site/nginx.conf`, `docs/runbooks/graph-publishing.md`,
+`docs/operations/GLD-INFRA-0022.md`
+
+**Estimated scope:** Medium: 5 files
+
+### Task 15: Deploy, review, and publish
+
+**Description:** Install the pinned runtime and automation, run an initial
+manual refresh, switch nginx to the atomic release, enable the timer, complete
+fresh Luna/root reviews, and push only the claimed Server paths.
+
+**Acceptance criteria:**
+- [ ] A timestamped rollback snapshot exists before production mutation.
+- [ ] The first refresh records both current remote SHAs and Graphify provenance.
+- [ ] Public health, selector, both canvases, main web, and API checks pass.
+- [ ] Luna findings are resolved or explicitly accepted; repository checks pass.
+
+**Verification:** Service journal/status, timer listing, public HTTP/browser
+smoke tests, `make check`, `git diff --check`, and symbiosis `check-paths`.
+
+**Dependencies:** Tasks 13-14.
+
+**Files likely touched:** `docs/operations/GLD-INFRA-0022.md`,
+`tasks/plan.md`, `tasks/todo.md`
+
+**Estimated scope:** Medium: repository evidence plus production artifacts
+
+### Checkpoint: automated graph refresh
+
+- [x] Local publisher failure/success/no-op/retention tests pass.
+- [x] Fresh Luna review findings are resolved or explicitly accepted.
+- [ ] Production timer and public graph site remain healthy after the first run.
+
+### Risks and mitigations: automated graph refresh
+
+| Risk | Impact | Mitigation |
+|---|---|---|
+| Upstream changes contain sensitive material | High | Code-only extraction, explicit ignores, bounded token/path scan, atomic abort |
+| Branch moves between resolution and fetch | Low | Fetch exact resolved SHA; abort and retry next schedule if unavailable |
+| Graphify/runtime drift changes output unexpectedly | High | Immutable Graphify commit, checked version and pin marker, provenance manifest |
+| Failed or overlapping generation damages the site | High | Non-blocking `flock`, isolated staging, validation before atomic symlink switch |
+| Generated releases consume disk | Medium | Keep a bounded release count after each successful publication |

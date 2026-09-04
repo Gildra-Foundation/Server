@@ -1,11 +1,15 @@
 SHELL := /bin/bash
 
 .DEFAULT_GOAL := check
-.PHONY: check check-frontend check-backend check-api check-workflows check-security check-agent-response
+.PHONY: check check-frontend check-backend check-api check-workflows check-graph-refresh check-security check-agent-response
 
 # Run the checks that match the repository. Empty stacks are skipped so this
 # infrastructure repository can use the same entry point as application repos.
-check: check-frontend check-backend check-api check-workflows
+check: check-frontend check-backend check-api check-workflows check-graph-refresh
+
+check-graph-refresh:
+	@bash -n scripts/refresh-graph-site.sh scripts/test-refresh-graph-site.sh
+	@scripts/test-refresh-graph-site.sh
 
 check-frontend:
 	@set -euo pipefail; \

@@ -37,3 +37,12 @@
 - [x] Validate and deploy only the graph static files and nginx service.
 - [x] Verify both graphs publicly and run the Luna/root quality gates.
 - [x] Commit and push the reviewed Server repository changes.
+
+## Automated graph refresh
+
+- [x] Implement and validate the atomic dual-repository publisher.
+- [ ] Add the hardened hourly systemd service/timer and atomic nginx root.
+- [x] Complete fresh Luna review and resolve every finding.
+- [ ] Snapshot production, pass the operation gate, and deploy the pinned runtime.
+- [ ] Verify the first refresh, timer, public graphs, main site, and API.
+- [ ] Commit and push only claimed Server repository paths.

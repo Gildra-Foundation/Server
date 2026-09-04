@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule hourly Gildra and Server code graph refresh
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=10m
+Persistent=true
+Unit=gildra-graph-refresh.service
+
+[Install]
+WantedBy=timers.target
