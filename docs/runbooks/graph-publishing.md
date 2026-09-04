@@ -65,7 +65,9 @@ sizes.
 4. Install the official Gitleaks `8.21.2` Linux x64 binary as
    `/usr/local/lib/gildra-graph/gitleaks`. Verify the release checksum is
    `5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba`
-   before installation and verify `gitleaks version`.
+   before extraction, then verify the installed binary checksum is
+   `50b742abd7daad8bbddb6301f3017efb680632d9a5b3b4d8f137b3aac250e359`
+   and `gitleaks version` reports `8.21.2`.
 5. Install `scripts/refresh-graph-site.sh` and `graph-site/index.html` under
    `/usr/local/lib/gildra-graph/`, owned by root and not writable by the
    service account.

@@ -26,8 +26,10 @@ outside the mutation scope.
 - The Graphify skill lock pins
   `33362d969292b57eda82f3fbd9eb5f3f5bc9bbc2`, whose package version is
   `0.9.53`.
-- The official Gitleaks `8.21.2` Linux x64 release checksum resolves to
+- The official Gitleaks `8.21.2` Linux x64 archive checksum resolves to
   `5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba`.
+  Its extracted binary checksum is
+  `50b742abd7daad8bbddb6301f3017efb680632d9a5b3b4d8f137b3aac250e359`.
 - The requested automation cadence was not specified. The selected default is
   hourly with up to ten minutes of jitter; it can be changed with a timer
   override.
