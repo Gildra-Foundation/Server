@@ -394,10 +394,10 @@ both Graphify viewers, and atomically switches a versioned release symlink.
 rollback.
 
 **Acceptance criteria:**
-- [ ] The timer is persistent, hourly, randomized, and cannot overlap itself.
-- [ ] The service has no capabilities and can write only graph state/runtime paths.
-- [ ] Nginx serves the release symlink through the existing read-only mount.
-- [ ] The runbook and operation card name exact checks and rollback steps.
+- [x] The timer is persistent, hourly, randomized, and cannot overlap itself.
+- [x] The service has no capabilities and can write only graph state/runtime paths.
+- [x] Nginx serves the release symlink through the existing read-only mount.
+- [x] The runbook and operation card name exact checks and rollback steps.
 
 **Verification:** `systemd-analyze verify`, disposable and live `nginx -t`,
 operation gate, and production service/timer status.
@@ -418,10 +418,10 @@ manual refresh, switch nginx to the atomic release, enable the timer, complete
 fresh Luna/root reviews, and push only the claimed Server paths.
 
 **Acceptance criteria:**
-- [ ] A timestamped rollback snapshot exists before production mutation.
-- [ ] The first refresh records both current remote SHAs and Graphify provenance.
-- [ ] Public health, selector, both canvases, main web, and API checks pass.
-- [ ] Luna findings are resolved or explicitly accepted; repository checks pass.
+- [x] A timestamped rollback snapshot exists before production mutation.
+- [x] The first refresh records both current remote SHAs and Graphify provenance.
+- [x] Public health, selector, both canvases, main web, and API checks pass.
+- [x] Luna findings are resolved or explicitly accepted; repository checks pass.
 
 **Verification:** Service journal/status, timer listing, public HTTP/browser
 smoke tests, `make check`, `git diff --check`, and symbiosis `check-paths`.
@@ -437,7 +437,7 @@ smoke tests, `make check`, `git diff --check`, and symbiosis `check-paths`.
 
 - [x] Local publisher failure/success/no-op/retention tests pass.
 - [x] Fresh Luna review findings are resolved or explicitly accepted.
-- [ ] Production timer and public graph site remain healthy after the first run.
+- [x] Production timer and public graph site remain healthy after the first run.
 
 ### Risks and mitigations: automated graph refresh
 

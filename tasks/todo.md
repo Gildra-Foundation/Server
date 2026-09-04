@@ -41,8 +41,8 @@
 ## Automated graph refresh
 
 - [x] Implement and validate the atomic dual-repository publisher.
-- [ ] Add the hardened hourly systemd service/timer and atomic nginx root.
+- [x] Add the hardened hourly systemd service/timer and atomic nginx root.
 - [x] Complete fresh Luna review and resolve every finding.
-- [ ] Snapshot production, pass the operation gate, and deploy the pinned runtime.
-- [ ] Verify the first refresh, timer, public graphs, main site, and API.
-- [ ] Commit and push only claimed Server repository paths.
+- [x] Snapshot production, pass the operation gate, and deploy the pinned runtime.
+- [x] Verify the first refresh, timer, public graphs, main site, and API.
+- [x] Commit and push only claimed Server repository paths.
