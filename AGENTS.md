@@ -131,14 +131,24 @@ Apply these principles to every implementation, infrastructure, and data task:
 For every repository or production task (excluding a pure conversational
 answer), follow this order. Do not silently skip a stage:
 
-0. **Context scout before implementation.** Spawn an isolated sub-agent with
-   the requested model `gpt-5.6-luna` (5.6 Luna) before selecting skills or
-   touching task files. Give it read-only access to the repository and shared
-   symbiosis state. It must inspect the current worktree, active tasks, locks,
-   latest handoff, relevant project documents, and the files likely to change.
-   Its brief must state the objective, constraints, cross-session conflicts,
-   relevant files, unknowns, and proposed checks. It must not edit, commit,
-   push, deploy, or change credentials.
+0. **Luna context scout is the first repository action.** Before selecting
+   skills, inspecting task files in detail, or implementing anything, spawn an
+   isolated read-only sub-agent with the requested model `gpt-5.6-luna` (5.6
+   Luna). Give it access to the repository and shared symbiosis state. It must
+   inspect the current worktree, active tasks, locks, latest handoff, relevant
+   project documents, the repository skill catalog at
+   `agent/skills.lock.json`, and the files likely to change. Its brief must
+   state the objective, constraints, cross-session conflicts, relevant files,
+   unknowns, and proposed checks. It must not edit, commit, push, deploy, or
+   change credentials. The root agent must use this Luna brief as the starting
+   context before selecting and reading the smallest relevant skills.
+
+   If the repository has a current `graphify-out/graph.json`, the Luna scout
+   must query it first for architecture, ownership, dependency, and change
+   impact context. If it is missing or stale, build/update the local Graphify
+   map before detailed source inspection when the Graphify skill is installed.
+   Never include secrets, production inventories, raw logs, database dumps, or
+   rendered secret-bearing configuration in the graph inputs.
 1. **Select skills and tools after the brief.** The root agent chooses the
    smallest relevant skill set and MCP/plugin tools, reads each selected
    `SKILL.md`, and records selected capabilities plus justified skips in the
@@ -168,6 +178,11 @@ the operation record explicitly records the degraded mode and follow-up Luna
 review.
 
 ### 1. Start with shared context
+
+- Use Graphify as the repository context index when available: build the map
+  with `graphify .`, then use `graphify query`, `graphify path`, or `graphify
+  explain` for scoped questions. Treat `graphify-out/` as generated local
+  evidence; review its ignore/status policy before committing anything.
 
 - Read this file, `README.md`, `docs/project-context.md`,
   `docs/architecture.md`, `docs/deployment-plan.md`, and the relevant runbook.

@@ -1,0 +1,26 @@
+{
+  "agent/skills.lock.json": {
+    "mtime": 1788528603.8394492,
+    "seen": 1788529205.4514706,
+    "ast_hash": "c31e0952e286dd4c6bf102650e3adac5",
+    "semantic_hash": "c31e0952e286dd4c6bf102650e3adac5"
+  },
+  "scripts/manage-agent-skills.py": {
+    "mtime": 1788392137.872499,
+    "seen": 1788529205.451477,
+    "ast_hash": "113b91947432636ab1ff7040e44d053e",
+    "semantic_hash": "113b91947432636ab1ff7040e44d053e"
+  },
+  "scripts/validate-agent-response.py": {
+    "mtime": 1788432094.6505272,
+    "seen": 1788529205.4514809,
+    "ast_hash": "6828924a8e7d8d68d8971ba180ee0eaf",
+    "semantic_hash": "6828924a8e7d8d68d8971ba180ee0eaf"
+  },
+  "scripts/validate.ps1": {
+    "mtime": 1788382149.212107,
+    "seen": 1788529205.4514847,
+    "ast_hash": "234efaba54791c7ed04ff42ebd54afcc",
+    "semantic_hash": "234efaba54791c7ed04ff42ebd54afcc"
+  }
+}

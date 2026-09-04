@@ -6,6 +6,30 @@
   "default_profile": "server",
   "sources": [
     {
+      "repo": "Graphify-Labs/graphify",
+      "ref": "33362d969292b57eda82f3fbd9eb5f3f5bc9bbc2",
+      "skills": [
+        { "name": "graphify", "path": "graphify/skills/codex", "profiles": ["server"] }
+      ]
+    },
+    {
+      "repo": "obra/superpowers",
+      "ref": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "skills": [
+        { "name": "brainstorming", "path": "skills/brainstorming", "profiles": ["server"] },
+        { "name": "systematic-debugging", "path": "skills/systematic-debugging", "profiles": ["server"] },
+        { "name": "verification-before-completion", "path": "skills/verification-before-completion", "profiles": ["server"] },
+        { "name": "writing-plans", "path": "skills/writing-plans", "profiles": ["server"] }
+      ]
+    },
+    {
+      "repo": "mattpocock/skills",
+      "ref": "3cca18b368ae95cdbdebbff572ccafa662551015",
+      "skills": [
+        { "name": "grill-with-docs", "path": "skills/engineering/grill-with-docs", "profiles": ["server"] }
+      ]
+    },
+    {
       "repo": "mhmtszr/go-guidelines",
       "ref": "24954fadd15f209de9d12772a35540b0af4e1435",
       "skills": [

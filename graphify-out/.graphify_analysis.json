@@ -1,0 +1,141 @@
+{
+  "communities": {
+    "0": [
+      "scripts_manage_agent_skills",
+      "scripts_manage_agent_skills_expanded",
+      "scripts_manage_agent_skills_fail",
+      "scripts_manage_agent_skills_load_manifest",
+      "scripts_manage_agent_skills_main",
+      "scripts_manage_agent_skills_validate_manifest"
+    ],
+    "1": [
+      "scripts_validate_agent_response",
+      "scripts_validate_agent_response_main",
+      "scripts_validate_agent_response_parse_args",
+      "scripts_validate_agent_response_py_namespace",
+      "scripts_validate_agent_response_read_response",
+      "scripts_validate_agent_response_validate"
+    ],
+    "2": [
+      "path",
+      "scripts_manage_agent_skills_activate_profile",
+      "scripts_manage_agent_skills_check_catalog",
+      "scripts_manage_agent_skills_install_catalog",
+      "scripts_manage_agent_skills_validate_skill_dir"
+    ],
+    "3": [
+      "scripts_manage_agent_skills_parse_args",
+      "scripts_manage_agent_skills_py_namespace"
+    ],
+    "4": [
+      "scripts_validate",
+      "scripts_validate_write_checkresult"
+    ]
+  },
+  "cohesion": {
+    "0": 0.7333333333333333,
+    "1": 0.5333333333333333,
+    "2": 0.7,
+    "3": 1.0,
+    "4": 1.0
+  },
+  "gods": [
+    {
+      "id": "scripts_manage_agent_skills_main",
+      "label": "main()",
+      "degree": 9
+    },
+    {
+      "id": "scripts_manage_agent_skills_fail",
+      "label": "fail()",
+      "degree": 7
+    },
+    {
+      "id": "scripts_manage_agent_skills_validate_skill_dir",
+      "label": "validate_skill_dir()",
+      "degree": 6
+    },
+    {
+      "id": "scripts_manage_agent_skills_activate_profile",
+      "label": "activate_profile()",
+      "degree": 5
+    },
+    {
+      "id": "scripts_manage_agent_skills_install_catalog",
+      "label": "install_catalog()",
+      "degree": 5
+    },
+    {
+      "id": "scripts_manage_agent_skills_load_manifest",
+      "label": "load_manifest()",
+      "degree": 4
+    },
+    {
+      "id": "scripts_validate_agent_response_main",
+      "label": "main()",
+      "degree": 4
+    },
+    {
+      "id": "scripts_manage_agent_skills_check_catalog",
+      "label": "check_catalog()",
+      "degree": 4
+    },
+    {
+      "id": "scripts_manage_agent_skills_expanded",
+      "label": "expanded()",
+      "degree": 3
+    },
+    {
+      "id": "scripts_manage_agent_skills_validate_manifest",
+      "label": "validate_manifest()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "read_response()",
+      "target": "Path",
+      "source_files": [
+        "scripts/validate-agent-response.py",
+        ""
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "note": "Bridges community 1 → community 2"
+    },
+    {
+      "source": "expanded()",
+      "target": "Path",
+      "source_files": [
+        "scripts/manage-agent-skills.py",
+        ""
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 → community 2"
+    },
+    {
+      "source": "main()",
+      "target": "parse_args()",
+      "source_files": [
+        "scripts/manage-agent-skills.py",
+        "scripts/manage-agent-skills.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 → community 3"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `read_response()` connect `validate-agent-response.py` to `Path`?",
+      "why": "High betweenness centrality (0.342) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `main()` connect `manage-agent-skills.py` to `Path`, `parse_args`?",
+      "why": "High betweenness centrality (0.113) - this node is a cross-community bridge."
+    }
+  ]
+}
