@@ -29,3 +29,11 @@
   rules to the server contract and runbook.
 - [x] Run Luna review and record assumptions, options, trade-offs, and findings.
 - [x] Run the root quality gate, commit locally, and release the session.
+
+## Dual-repository Graphify viewer
+
+- [x] Generate and screen the immutable Gildra graph artifact.
+- [x] Add the accessible `Gildra / Server` selector and same-origin frame policy.
+- [x] Validate and deploy only the graph static files and nginx service.
+- [x] Verify both graphs publicly and run the Luna/root quality gates.
+- [ ] Commit and push the reviewed Server repository changes.

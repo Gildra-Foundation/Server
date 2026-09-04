@@ -254,3 +254,84 @@ passed; evidence is recorded in `docs/operations/GLD-INFRA-0017.md`.
 `tasks/plan.md`, `tasks/todo.md`, `docs/operations/GLD-INFRA-0017.md`
 
 **Estimated scope:** Medium: 5 files
+
+## Follow-up: dual-repository Graphify viewer
+
+### Task 10: Build the Gildra graph artifact
+
+**Description:** Export the immutable Gildra application revision into a
+temporary directory and generate a secret-screened Graphify viewer without
+modifying the sibling checkout.
+
+**Acceptance criteria:**
+- [x] The published default graph comes from the Gildra default-branch revision
+      `8dac4fbddbcb3ced13c9a57c0e39fe7bce573d5b`.
+- [x] The sibling repository remains unchanged by this task.
+- [x] Generated public artifacts contain no secrets or private host paths.
+
+**Verification:** Compare the sibling status before/after, inspect generated
+metadata, and run bounded sensitive-pattern checks.
+
+**Dependencies:** Existing Graphify viewer deployment.
+
+**Files likely touched:** `graph-site/gildra.html`,
+`graph-site/server.html`
+
+**Estimated scope:** Small: 2 generated files
+
+### Task 11: Add the repository switcher
+
+**Description:** Add an accessible static selector that opens Gildra by
+default and switches the embedded viewer to the Server graph.
+
+**Acceptance criteria:**
+- [x] Gildra is selected on first load.
+- [x] Both graph canvases render after keyboard-usable repository selection.
+- [x] Same-origin framing is permitted while cross-origin framing stays denied.
+
+**Verification:** Validate nginx syntax and exercise both selector states in a
+headless browser without console errors.
+
+**Dependencies:** Task 10
+
+**Files likely touched:** `graph-site/index.html`,
+`deploy/graph-site/nginx.conf`
+
+**Estimated scope:** Small: 2 files
+
+### Task 12: Deploy and record the production change
+
+**Description:** Snapshot the current graph site, deploy only the graph static
+files and nginx vhost, verify public and existing routes, then publish the
+Server repository commit.
+
+**Acceptance criteria:**
+- [x] Rollback artifacts exist before the nginx service is recreated.
+- [x] `https://graph.gildra.net/` serves the selector and both graphs.
+- [x] Existing Gildra web/API routes remain healthy.
+
+**Verification:** Compose render, disposable and live `nginx -t`, HTTP/TLS
+checks, browser smoke test, `make check`, `git diff --check`, and symbiosis
+path validation.
+
+**Dependencies:** Tasks 10-11
+
+**Files likely touched:** `docs/runbooks/graph-publishing.md`,
+`docs/operations/GLD-INFRA-0021.md`, `tasks/plan.md`, `tasks/todo.md`
+
+**Estimated scope:** Medium: 4 files plus deployed static artifacts
+
+### Checkpoint: dual-repository viewer
+
+- [x] Local artifacts and proxy configuration validate.
+- [x] Fresh Luna review findings are resolved or explicitly accepted.
+- [x] Production and public browser verification pass before locks are released.
+
+## Risks and mitigations: dual-repository viewer
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Dirty sibling checkout leaks uncommitted work | High | Generate only from an exact `git archive` revision in `/tmp`. |
+| Generated graph exposes sensitive content | High | Use code-only extraction, explicit ignores, and pattern scans before publication. |
+| Framing policy breaks the embedded viewers | Medium | Allow only same-origin frames and verify both canvases in Chromium. |
+| Nginx recreation interrupts unrelated services | Medium | Recreate only nginx, keep a timestamped rollback, and smoke-test existing routes. |

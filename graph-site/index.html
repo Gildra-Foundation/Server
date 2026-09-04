@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Gildra · Code Graph</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: #0b0d10;
+        color: #f4f5f7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        background: #0b0d10;
+      }
+
+      header {
+        z-index: 1;
+        display: flex;
+        min-height: 3.5rem;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #292e36;
+        background: #111419;
+      }
+
+      .brand {
+        display: flex;
+        min-width: 0;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+
+      .subtitle,
+      #viewer-status {
+        margin: 0;
+        color: #9da5b1;
+        font-size: 0.75rem;
+      }
+
+      #viewer-status a {
+        color: #7dd3fc;
+        text-underline-offset: 0.2em;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-left: auto;
+        padding: 0.25rem;
+        border: 1px solid #303640;
+        border-radius: 0.5rem;
+        background: #0b0d10;
+      }
+
+      button {
+        min-height: 2rem;
+        padding: 0.375rem 0.75rem;
+        border: 0;
+        border-radius: 0.375rem;
+        background: transparent;
+        color: #b8bec8;
+        font: inherit;
+        font-size: 0.8125rem;
+        font-weight: 650;
+        cursor: pointer;
+      }
+
+      button:hover {
+        color: #ffffff;
+        background: #20252c;
+      }
+
+      button[aria-pressed="true"] {
+        color: #0b0d10;
+        background: #f4f5f7;
+      }
+
+      button:focus-visible {
+        outline: 2px solid #7dd3fc;
+        outline-offset: 2px;
+      }
+
+      main {
+        position: relative;
+        min-height: 0;
+      }
+
+      iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #0b0d10;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      iframe.is-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      noscript {
+        padding: 1rem;
+      }
+
+      noscript a {
+        color: #7dd3fc;
+      }
+
+      @media (max-width: 40rem) {
+        header {
+          gap: 0.5rem;
+          padding-inline: 0.75rem;
+        }
+
+        .subtitle,
+        #viewer-status {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        iframe {
+          transition: opacity 120ms ease;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <h1>Gildra Code Graph</h1>
+        <p class="subtitle">Graphify</p>
+      </div>
+      <nav aria-label="Выбор репозитория">
+        <button type="button" data-repository="gildra" aria-pressed="true">Gildra</button>
+        <button type="button" data-repository="server" aria-pressed="false">Server</button>
+      </nav>
+      <p id="viewer-status" aria-live="polite">
+        <span>Открывается Gildra</span>
+        · <a href="/gildra.html" target="_blank" rel="noopener">открыть отдельно</a>
+      </p>
+    </header>
+    <main>
+      <iframe
+        src="/gildra.html"
+        title="Граф репозитория Gildra"
+        data-repository="gildra"
+        class="is-active"
+      ></iframe>
+      <iframe
+        src="/server.html"
+        title="Граф репозитория Server"
+        data-repository="server"
+        aria-hidden="true"
+        tabindex="-1"
+      ></iframe>
+      <noscript>
+        JavaScript отключён. Откройте
+        <a href="/gildra.html">Gildra</a> или <a href="/server.html">Server</a>.
+      </noscript>
+    </main>
+    <script>
+      (() => {
+        const repositories = {
+          gildra: { label: "Gildra", src: "/gildra.html" },
+          server: { label: "Server", src: "/server.html" },
+        };
+        const viewers = [...document.querySelectorAll("iframe[data-repository]")];
+        const status = document.querySelector("#viewer-status");
+        const statusText = status.querySelector("span");
+        const directLink = status.querySelector("a");
+        const buttons = [...document.querySelectorAll("button[data-repository]")];
+        const loadStates = { gildra: "loading", server: "loading" };
+        let selectedName = "gildra";
+
+        function updateStatus() {
+          const repository = repositories[selectedName];
+          const state = loadStates[selectedName];
+          statusText.textContent =
+            state === "ready"
+              ? `Открыт ${repository.label}`
+              : state === "error"
+                ? `${repository.label} не загрузился`
+                : `Открывается ${repository.label}`;
+          directLink.href = repository.src;
+        }
+
+        function selectRepository(name, updateHash = true) {
+          const repository = repositories[name] || repositories.gildra;
+          selectedName = repositories[name] ? name : "gildra";
+
+          buttons.forEach((button) => {
+            button.setAttribute(
+              "aria-pressed",
+              String(button.dataset.repository === selectedName),
+            );
+          });
+
+          viewers.forEach((viewer) => {
+            const isActive = viewer.dataset.repository === selectedName;
+            viewer.classList.toggle("is-active", isActive);
+            viewer.setAttribute("aria-hidden", String(!isActive));
+            viewer.tabIndex = isActive ? 0 : -1;
+          });
+          updateStatus();
+
+          if (updateHash && window.location.hash !== `#${selectedName}`) {
+            window.history.replaceState(null, "", `#${selectedName}`);
+          }
+        }
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => selectRepository(button.dataset.repository));
+        });
+
+        viewers.forEach((viewer) => {
+          const name = viewer.dataset.repository;
+          const timeout = window.setTimeout(() => {
+            if (loadStates[name] === "loading") {
+              loadStates[name] = "error";
+              if (selectedName === name) updateStatus();
+            }
+          }, 30000);
+
+          viewer.addEventListener("load", () => {
+            window.clearTimeout(timeout);
+            loadStates[name] = "ready";
+            if (selectedName === name) updateStatus();
+          });
+
+          viewer.addEventListener("error", () => {
+            window.clearTimeout(timeout);
+            loadStates[name] = "error";
+            if (selectedName === name) updateStatus();
+          });
+        });
+
+        window.addEventListener("hashchange", () => {
+          selectRepository(window.location.hash.slice(1), false);
+        });
+
+        selectRepository(window.location.hash.slice(1), false);
+      })();
+    </script>
+  </body>
+</html>
