@@ -1,6 +1,6 @@
 # GLD-INFRA-0020 — Publish Graphify viewer on production origin
 
-Status: `partially_applied`
+Status: `applied`
 
 - Owner: Gildra project owner
 - Environment: current Gildra production host and Cloudflare zone `gildra.net`
@@ -15,7 +15,8 @@ Serve the generated Graphify viewer from the existing production nginx at
 
 ## Approved scope
 
-- Copy only the generated `graph.html` as the static site index.
+- Copy the generated `graph.html` as the static site index and `graph.json` as
+  the machine-readable graph payload for inspection and future query tooling.
 - Mount a dedicated read-only web root into the existing nginx container.
 - Add a dedicated nginx virtual host for `graph.gildra.net`.
 - Add a proxied Cloudflare DNS record after the origin passes local checks.
@@ -81,15 +82,19 @@ Serve the generated Graphify viewer from the existing production nginx at
   - `api.gildra.net/`: HTTP 200;
   - `cms.gildra.net/`: HTTP 404, matching its pre-existing root behavior.
 
-## Remaining blocker
+## Cloudflare DNS and public verification
 
-The Cloudflare plugin available in the current session exposes documentation
-skills but no callable DNS or Zone mutation tool. No Cloudflare API credential
-is present in the operator environment. Therefore the proxied DNS record for
-`graph.gildra.net` has not been created. The origin is ready, but public deploy
-verification remains blocked until a Cloudflare DNS-capable connector is made
-available or an operator creates the proxied record targeting the existing
-Gildra origin.
+Cloudflare MCP OAuth was completed through a local-browser SSH callback tunnel.
+The active `gildra.net` zone was found and a proxied A record for
+`graph.gildra.net` was created with automatic TTL and the same origin as the
+single apex A record. Readback confirmed the name, type, proxy state, and TTL.
+
+Public verification passed: DNS resolves, HTTPS `/` returns HTTP 200 through
+Cloudflare with the expected Graphify HTML, and `/healthz` returns `ok`.
+Public HTTP redirects to the fixed HTTPS hostname. The edge certificate is
+valid for `gildra.net`, and the expected content/security headers are present.
+A headless Chromium check loaded the public page with HTTP 200, found the
+Graphify title and one rendered canvas, and reported no console or page errors.
 
 ## Temporary direct-origin preview
 
@@ -107,9 +112,10 @@ to HTTPS using the unmatched Host value, which made raw-IP preview unusable.
 Named-host checks confirm that behavior for `gildra.net`, `api.gildra.net`, and
 `graph.gildra.net` remains selected by their explicit server names.
 
-To remove the preview, restore
-`/opt/gildra/rollback/graph-direct-preview-20260904T192643Z/graph.conf`, validate
-the restored full nginx configuration, and recreate only `gildra-nginx-1`.
+The preview was removed after Cloudflare DNS and HTTPS verification succeeded.
+The named `graph.gildra.net` origin vhost remains active. Its pre-removal config
+is retained under
+`/opt/gildra/rollback/graph-direct-preview-20260904T192643Z/graph.conf`.
 
 ## Luna review disposition
 
