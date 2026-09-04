@@ -89,3 +89,6 @@ graph vhost, static graph directory, and production/runtime Compose overlays.
   repository. The executed containerized Chromium journey is the release
   evidence; improving generator accessibility and adding a reusable smoke
   target remain follow-ups.
+- Repository implementation commit: `1dbd231` on
+  `chore/codex-review-action`; publication state is recorded in the symbiosis
+  handoff.

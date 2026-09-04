@@ -36,4 +36,4 @@
 - [x] Add the accessible `Gildra / Server` selector and same-origin frame policy.
 - [x] Validate and deploy only the graph static files and nginx service.
 - [x] Verify both graphs publicly and run the Luna/root quality gates.
-- [ ] Commit and push the reviewed Server repository changes.
+- [x] Commit and push the reviewed Server repository changes.
