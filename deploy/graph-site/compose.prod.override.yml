@@ -1,0 +1,5 @@
+services:
+  nginx:
+    volumes:
+      - /opt/gildra/infra/nginx/graph.conf:/etc/nginx/conf.d/graph.conf:ro
+      - /opt/gildra/static/graph:/usr/share/nginx/html/graph:ro

@@ -1,6 +1,0 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "gildra-graph",
-  "pages_build_output_dir": "../graphify-out",
-  "compatibility_date": "2026-09-04"
-}

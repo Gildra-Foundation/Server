@@ -1,35 +1,45 @@
-# Graph publishing
+# Publish the Graphify viewer on the production origin
 
-The Graphify output is a static Cloudflare Pages deployment. The intended
-custom domain is `graph.gildra.net`; no production server or database is
-required for this viewer.
+This runbook serves `graphify-out/graph.html` from the existing production
+nginx at `https://graph.gildra.net/`. Cloudflare Pages is not used.
 
-## Build
+## Preconditions
 
-From the repository root, regenerate the safe local graph and report:
+- Retain the current session and verify an independent recovery path.
+- Confirm the wildcard origin certificate covers `*.gildra.net`.
+- Run `nginx -t` against the current container.
+- Create a timestamped rollback directory under `/opt/gildra/rollback/` and
+  copy `compose.prod.yml`, `compose.runtime.yml`, and the current nginx files.
+- Confirm the reviewed graph contains no secrets, inventories, raw logs,
+  database dumps, private host identifiers, or rendered secret configuration.
 
-```bash
-graphify . --code-only
-graphify cluster-only .
-```
+## Install
 
-Do not include production inventories, raw logs, database dumps, secrets, or
-rendered secret-bearing configuration in the input corpus.
+1. Install `deploy/graph-site/nginx.conf` as
+   `/opt/gildra/infra/nginx/graph.conf` with mode `0644`.
+2. Install `graphify-out/graph.html` as
+   `/opt/gildra/static/graph/index.html` with mode `0644`.
+3. Install `graphify-out/graph.json` beside it for inspection and future query
+   tooling.
+4. Add the two read-only mounts from
+   `deploy/graph-site/compose.prod.override.yml` to the final production Compose
+   rendering. Account for any `volumes: !override` section in later overlays.
+5. Run `docker compose config --quiet`, then use a disposable nginx service to
+   run `nginx -t` before recreating only the nginx service.
 
-## Deploy
+## Verify
 
-Create or select the Cloudflare Pages project `gildra-graph`, then deploy the
-prebuilt directory using the repository Wrangler configuration:
+- Run `nginx -t` in the recreated nginx container.
+- Resolve `graph.gildra.net` locally to the origin and verify `/` returns the
+  Graphify HTML and `/healthz` returns `ok`.
+- Verify existing public hosts before changing DNS.
+- Create a proxied Cloudflare DNS record for `graph.gildra.net` targeting the
+  existing Gildra origin.
+- Verify public DNS, HTTP-to-HTTPS redirect, TLS, `/`, `/healthz`, security
+  headers, and the interactive graph in a browser.
 
-```bash
-npx wrangler pages deploy graphify-out --project-name=gildra-graph \
-  --commit-hash="$(git rev-parse HEAD)"
-```
+## Rollback
 
-Attach `graph.gildra.net` under the Pages project's Custom domains. Cloudflare
-must manage the `gildra.net` zone for this custom domain. Verify DNS, HTTPS,
-the graph viewer, and that no private source paths or secrets are published.
-
-The Pages project, custom domain, account ID, and API token are external
-configuration and must not be committed. Use a scoped token through the
-operator environment or CI secret store.
+Remove the graph DNS record if created, restore the saved Compose and nginx
+files, validate the restored configuration, and recreate only nginx. Do not
+recreate application or database services.
