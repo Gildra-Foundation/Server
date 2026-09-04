@@ -91,6 +91,26 @@ verification remains blocked until a Cloudflare DNS-capable connector is made
 available or an operator creates the proxied record targeting the existing
 Gildra origin.
 
+## Temporary direct-origin preview
+
+At the owner's request, an unmatched-host HTTP-only nginx vhost serves the same
+read-only graph root directly through the server IPv4 address. It is marked
+`noindex, nofollow` and `no-store`. Existing named HTTPS vhosts remain
+unchanged. Remove this default HTTP vhost after Cloudflare DNS and public HTTPS
+verification are complete.
+
+The complete deployed `nginx -T` output was checked after apply. The only
+port-80 servers are the existing named redirect for Gildra hosts, the explicit
+`graph.gildra.net` redirect, and this temporary default preview. Before this
+change unmatched hosts fell through to the first named server and redirected
+to HTTPS using the unmatched Host value, which made raw-IP preview unusable.
+Named-host checks confirm that behavior for `gildra.net`, `api.gildra.net`, and
+`graph.gildra.net` remains selected by their explicit server names.
+
+To remove the preview, restore
+`/opt/gildra/rollback/graph-direct-preview-20260904T192643Z/graph.conf`, validate
+the restored full nginx configuration, and recreate only `gildra-nginx-1`.
+
 ## Luna review disposition
 
 - Fixed the open redirect concern by pinning the HTTP redirect destination to
